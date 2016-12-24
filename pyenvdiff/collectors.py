@@ -209,8 +209,8 @@ class SysVersionInfo(Collector):
     def from_env():
         import sys
         info = {}
-        for attr in SysVersionInfo.attrs:
-            info[attr] = getattr(sys.version_info, attr)
+        for i, attr in enumerate(SysVersionInfo.attrs):
+            info[attr] = sys.version_info[i]
         return info
     def __str__(self):
         return ".".join([str(self.info[a]) for a in self.attrs])

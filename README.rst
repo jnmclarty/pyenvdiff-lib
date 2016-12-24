@@ -20,20 +20,38 @@ PyEnvDiff
 
 Python environment comparison tool.
 
+Sooo much room for activities!
+------------------------------
+
+* Compare dev, test & prod!
+* Works on my machine, strange it doesn't work on yours
+* Confirming deployments
+* Auditing user desktops, servers, research environments & ecosystems
+* Filing (or requesting) bug reports
+
+Installation
+------------
+
+```
+pip install pyenvdiff 
+```
+
+OR just copy & paste pyenvdiff anywhere on PYTHONPATH
+
+Under the hood
+--------------
+
+* Zero dependency, pure-python, harmless `pip install pyenvdiff` or copy anywhere on PYTHONPATH.
+* As-needed import statements, to maximize compatibility across python flavours.
+* Favours compatible python-code over succinct or newer-style python-code
 
 * Free software: BSD license
 * Documentation: https://pyenvdiff.readthedocs.io.
 
-
-Features
---------
-
-* TODO
-
 Credits
 ---------
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+This package was started with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
