@@ -68,6 +68,7 @@ Ready to contribute? Here's how to set up `pyenvdiff` for local development.
 
     $ mkvirtualenv pyenvdiff
     $ cd pyenvdiff/
+    $ pip install -r requirements_dev.txt
     $ python setup.py develop
 
 4. Create a branch for local development::
