@@ -234,3 +234,8 @@ collector_classes = [Platform, PkgutilModules, PipDistributions,
                      SysByteOrder, SysExecutable, SysPath, SysPlatform, SysVersion,
                      SysVersionInfo, SysFloatInfo, SysApiVersion,
                      OSUname, TimeZone]
+
+collector_class_lookup = {}
+for CollectorClass in collector_classes:
+    collector_class_lookup[CollectorClass.__name__] = CollectorClass
+del CollectorClass
