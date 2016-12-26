@@ -30,11 +30,20 @@ def import_json():
         warn("Couldn't import json.  " + compatibility + instructions)
     return json
 
-
 def import_os():
     try:
         import os
     except:
         warn("Couldn't import os.  " + compatibility + instructions)
     return os
+
+def import_urllib_x():
+    sys = import_sys()
+    try:
+        if sys.version_info[0] < 3:
+            from urllib2 import Request, urlopen
+        else:
+            from urllib.request import Request, urlopen
+    except:
+        warn("Couldn't import Request & urlopen.  " + compatibility + instructions)
     return Request, urlopen
