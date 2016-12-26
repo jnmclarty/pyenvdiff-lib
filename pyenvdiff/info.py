@@ -2,7 +2,8 @@
 
 # We shouldn't have any import errors here, they should be inside
 # any given class, to maximize compatibility.
-from pyenvdiff.import_macros import import_sys
+
+
 from pyenvdiff import __version__
 
 from pyenvdiff.collectors import collector_classes, collector_class_lookup

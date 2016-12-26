@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from .import_macros import import_json, import_urllib_x
+from pyenvdiff.import_macros import import_json, import_urllib_x
 
 json = import_json()
 Request, urlopen = import_urllib_x()
 
-from . import __version__
+from pyenvdiff import __version__
 from pyenvdiff.info import Environment
 
 def send(environment, organization=None, group=None, subgroup=None, username=None, email=None, domain=None, application=None, version=None, tags=None):
     data = {'pyenvdiff_version' : __version__}
-    
+
     data['user_meta'] = {'organization' : organization,
                    'group' : group,
                    'subgroup' : subgroup,
