@@ -1,10 +1,42 @@
 
+from pyenvdiff.import_macros import import_sys
+
+class CollectorDiff(object):
+    def __init__(self, coll_left, coll_right):
+        self.coll_l = coll_left
+        self.coll_r = coll_right
+        self.matching = coll_left == coll_right
+    def as_bool(self): # avoid the __bool__ / __nonzero__ headache.
+        return self.matching
+    def __str__(self):
+        if self.matching:
+            return "Matching!"
+        else:
+            out = []
+            out.append("Does not match")
+            out.append("LEFT:   " + ">" * 20)
+            out.append(str(self.coll_l))
+            out.append("RIGHT:  " + ">" * 20)
+            out.append(str(self.coll_r))
+            out.append("<>" * 20)
+        return "\n".join(out)
+    def for_json(self):
+        out = {"matching" : self.matching,
+               "left" : self.coll_l.for_web(),
+               "right" : self.coll_r.for_web(),
+               "comparison" : None}
+
+        if not self.matching:
+            out["comparison"] = self.coll_l.diff(self.coll_r)
+
+        return out
+
 class Collector(object):
     def __init__(self, info=None):
         try:
             self.info = info or self.__class__.from_env()
         except:
-            import sys
+            sys = import_sys()
             e_info = sys.exc_info()[1]
             msg = "Error attempting to collect (%s): %s"
             self.info = msg % (self.__class__.__name__, e_info)
@@ -46,6 +78,9 @@ class Collector(object):
         if self._type_equality_check(oth):
             return self._basic_content_check(oth)
         return False
+
+    def compare(self, collector):
+        return CollectorDiff(self, collector)
 
 class Platform(Collector):
     @staticmethod
