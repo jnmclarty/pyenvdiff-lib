@@ -15,8 +15,8 @@ import sys
 
 import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
-from pyenvdiff.info import Environment
-from pyenvdiff.post import get_available_parser_name_and_class, execute_parsing_engine, send
+from pyenvdiff.info import Environment, EnvironmentDiff
+from pyenvdiff.post import get_available_parser_name_and_class, send
 
 class PythonVersion(object):
     def __init__(self):
@@ -90,6 +90,69 @@ class TestEnvironment(object):
         env_keys = list(self.env.collectors.keys())
         for env_key in env_keys:
             assert len(str(self.env.collectors[env_key])) > 1
+
+    @classmethod
+    def teardown_class(cls):
+        pass
+
+class TestEnvironment(object):
+    def test_identical_environments_match(self):
+        env1 = Environment()
+        env2 = Environment()
+        ed = EnvironmentDiff(env1, env2)
+        assert ed.as_bool(), "Two identical calls, should compare to true!"
+
+    def test_identical_environments_convert_to_strings_for_every_collector(self):
+        env1 = Environment()
+        env2 = Environment()
+        ed = EnvironmentDiff(env1, env2)
+        assert str(ed).count("Matching!") == len(collector_classes), "Every collector should match, even erroneous one"
+
+    @pt.mark.parametrize("CollectorClass", collector_classes)
+    def test_non_matching_collectors(self, CollectorClass):
+        env1 = Environment()
+        env2 = Environment()
+
+        actual_collector_type = type(env1.collectors[CollectorClass.__name__].info)
+
+        if actual_collector_type == int:
+            non_matching_info = -5555
+        elif actual_collector_type == str:
+            non_matching_info = "Something that doesn't match"
+        elif actual_collector_type == list:
+            non_matching_info = "Something that doesn't match".split(" ")
+        elif actual_collector_type == dict:
+            non_matching_info = {'Something' : "that", 'does not' : "match"}
+        else:
+            msg = "Every possible type of info should be handled, %s of %s is not."
+            raise Exception(msg  % (actual_collector_type, CollectorClass))
+
+        non_matching_collector = CollectorClass(non_matching_info)
+        env1.collectors[CollectorClass.__name__] = non_matching_collector
+
+        assert not EnvironmentDiff(env1, env2).as_bool()
+    def test_reading_and_writing_to_yaml(self):
+
+        if python_version['2']:
+            from StringIO import StringIO
+        else:
+            from io import StringIO
+
+        env1 = Environment()
+
+        env_1_fs = StringIO()
+        env_2_fs = StringIO()
+
+        env1._to_yaml_fs(env_1_fs)
+        env_1_fs.seek(0)
+        env2 = Environment._from_yaml_fs(env_1_fs)
+        env2._to_yaml_fs(env_2_fs)
+        env_2_fs.seek(0)
+        env3 = Environment._from_yaml_fs(env_2_fs)
+
+        msg = "Reinstantiated Environments should match!"
+        assert EnvironmentDiff(env1, env3).as_bool(), msg
+
 
 class TestPost(object):
     @classmethod
