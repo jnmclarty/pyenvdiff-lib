@@ -1,0 +1,178 @@
+# PyEnvColla Environment File v0.1.0
+OSUname: 'Error attempting to collect (OSUname): ''module'' object has no attribute
+  ''uname'''
+PipDistributions:
+- {key: babel, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.3.3,
+  platform: None, project_name: Babel, py_version: '2.7', version: 2.3.3}
+- {key: flask, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.11.1,
+  platform: None, project_name: Flask, py_version: '2.7', version: 0.11.1}
+- {key: flask-restful, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.3.5,
+  platform: None, project_name: Flask-RESTful, py_version: None, version: 0.3.5}
+- {key: jinja2, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '2.8',
+  platform: None, project_name: Jinja2, py_version: '2.7', version: '2.8'}
+- {key: markupsafe, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '0.23',
+  platform: None, project_name: MarkupSafe, py_version: '2.7', version: '0.23'}
+- {key: pyyaml, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '3.11',
+  platform: None, project_name: PyYAML, py_version: '2.7', version: '3.11'}
+- {key: pygments, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.1.3,
+  platform: None, project_name: Pygments, py_version: '2.7', version: 2.1.3}
+- {key: werkzeug, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.10.4,
+  platform: None, project_name: Werkzeug, py_version: '2.7', version: 0.10.4}
+- {key: alabaster, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.7.8,
+  platform: None, project_name: alabaster, py_version: '2.7', version: 0.7.8}
+- {key: aniso8601, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.1.0,
+  platform: None, project_name: aniso8601, py_version: None, version: 1.1.0}
+- {key: argh, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.26.2,
+  platform: None, project_name: argh, py_version: None, version: 0.26.2}
+- {key: backports-abc, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '0.4',
+  platform: None, project_name: backports-abc, py_version: '2.7', version: '0.4'}
+- {key: backports.shutil-get-terminal-size, location: 'c:\anaconda\envs\alpha\lib\site-packages',
+  parsed_version: 1.0.0, platform: None, project_name: backports.shutil-get-terminal-size,
+  py_version: '2.7', version: 1.0.0}
+- {key: backports.ssl-match-hostname, location: 'c:\anaconda\envs\alpha\lib\site-packages',
+  parsed_version: 3.4.0.2, platform: None, project_name: backports.ssl-match-hostname,
+  py_version: '2.7', version: 3.4.0.2}
+- {key: bokeh, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.12.2,
+  platform: None, project_name: bokeh, py_version: '2.7', version: 0.12.2}
+- {key: click, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '6.6',
+  platform: None, project_name: click, py_version: '2.7', version: '6.6'}
+- {key: colorama, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.3.7,
+  platform: None, project_name: colorama, py_version: '2.7', version: 0.3.7}
+- {key: configparser, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 3.5.0b2,
+  platform: None, project_name: configparser, py_version: '2.7', version: 3.5.0b2}
+- {key: coverage, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '4.2',
+  platform: None, project_name: coverage, py_version: None, version: '4.2'}
+- {key: decorator, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.0.10,
+  platform: None, project_name: decorator, py_version: '2.7', version: 4.0.10}
+- {key: docutils, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '0.12',
+  platform: None, project_name: docutils, py_version: '2.7', version: '0.12'}
+- {key: funcsigs, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.0.2,
+  platform: None, project_name: funcsigs, py_version: '2.7', version: 1.0.2}
+- {key: functools32, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 3.2.3.post2,
+  platform: None, project_name: functools32, py_version: '2.7', version: 3.2.3.post2}
+- {key: futures, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 3.0.5,
+  platform: None, project_name: futures, py_version: '2.7', version: 3.0.5}
+- {key: imagesize, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.7.1,
+  platform: None, project_name: imagesize, py_version: '2.7', version: 0.7.1}
+- {key: ipykernel, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.3.1,
+  platform: None, project_name: ipykernel, py_version: '2.7', version: 4.3.1}
+- {key: ipython, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.2.0,
+  platform: None, project_name: ipython, py_version: '2.7', version: 4.2.0}
+- {key: ipython-genutils, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.1.0,
+  platform: None, project_name: ipython-genutils, py_version: '2.7', version: 0.1.0}
+- {key: ipywidgets, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.1.1,
+  platform: None, project_name: ipywidgets, py_version: '2.7', version: 4.1.1}
+- {key: itsdangerous, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '0.24',
+  platform: None, project_name: itsdangerous, py_version: '2.7', version: '0.24'}
+- {key: jedi, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.9.0,
+  platform: None, project_name: jedi, py_version: '2.7', version: 0.9.0}
+- {key: jsonschema, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.5.1,
+  platform: None, project_name: jsonschema, py_version: '2.7', version: 2.5.1}
+- {key: jupyter, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.0.0,
+  platform: None, project_name: jupyter, py_version: '2.7', version: 1.0.0}
+- {key: jupyter-client, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.3.0,
+  platform: None, project_name: jupyter-client, py_version: '2.7', version: 4.3.0}
+- {key: jupyter-console, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.1.1,
+  platform: None, project_name: jupyter-console, py_version: '2.7', version: 4.1.1}
+- {key: jupyter-core, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.1.0,
+  platform: None, project_name: jupyter-core, py_version: '2.7', version: 4.1.0}
+- {key: mistune, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.7.2,
+  platform: None, project_name: mistune, py_version: '2.7', version: 0.7.2}
+- {key: mock, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.0.0,
+  platform: None, project_name: mock, py_version: '2.7', version: 2.0.0}
+- {key: nbconvert, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.2.0,
+  platform: None, project_name: nbconvert, py_version: '2.7', version: 4.2.0}
+- {key: nbformat, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.0.1,
+  platform: None, project_name: nbformat, py_version: '2.7', version: 4.0.1}
+- {key: notebook, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.2.1,
+  platform: None, project_name: notebook, py_version: '2.7', version: 4.2.1}
+- {key: numpy, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.11.0,
+  platform: None, project_name: numpy, py_version: '2.7', version: 1.11.0}
+- {key: pandas, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.18.1,
+  platform: None, project_name: pandas, py_version: '2.7', version: 0.18.1}
+- {key: path.py, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.0.0,
+  platform: None, project_name: path.py, py_version: '2.7', version: 0.0.0}
+- {key: pathlib2, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.1.0,
+  platform: None, project_name: pathlib2, py_version: '2.7', version: 2.1.0}
+- {key: pbr, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.10.0,
+  platform: None, project_name: pbr, py_version: '2.7', version: 1.10.0}
+- {key: pep8, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.7.0,
+  platform: None, project_name: pep8, py_version: '2.7', version: 1.7.0}
+- {key: pickleshare, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.7.2,
+  platform: None, project_name: pickleshare, py_version: '2.7', version: 0.7.2}
+- {key: pip, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 8.1.2,
+  platform: None, project_name: pip, py_version: '2.7', version: 8.1.2}
+- {key: psutil, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.3.0,
+  platform: None, project_name: psutil, py_version: '2.7', version: 4.3.0}
+- {key: py, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.4.31,
+  platform: None, project_name: py, py_version: '2.7', version: 1.4.31}
+- {key: pyenvcolla, location: 'c:\projects\pyenvcolla', parsed_version: 0.1.0, platform: None,
+  project_name: pyenvcolla, py_version: None, version: 0.1.0}
+- {key: pyflakes, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.2.3,
+  platform: None, project_name: pyflakes, py_version: '2.7', version: 1.2.3}
+- {key: pyreadline, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '2.1',
+  platform: None, project_name: pyreadline, py_version: '2.7', version: '2.1'}
+- {key: pytest, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 3.0.3,
+  platform: None, project_name: pytest, py_version: '2.7', version: 3.0.3}
+- {key: python-dateutil, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.5.3,
+  platform: None, project_name: python-dateutil, py_version: '2.7', version: 2.5.3}
+- {key: pytz, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '2016.4',
+  platform: None, project_name: pytz, py_version: '2.7', version: '2016.4'}
+- {key: pyzmq, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 15.2.0,
+  platform: None, project_name: pyzmq, py_version: '2.7', version: 15.2.0}
+- {key: qtconsole, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.2.1,
+  platform: None, project_name: qtconsole, py_version: '2.7', version: 4.2.1}
+- {key: requests, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.11.1,
+  platform: None, project_name: requests, py_version: '2.7', version: 2.11.1}
+- {key: rope, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.9.4,
+  platform: None, project_name: rope, py_version: '2.7', version: 0.9.4}
+- {key: setuptools, location: 'c:\anaconda\envs\alpha\lib\site-packages\setuptools-23.0.0-py2.7.egg',
+  parsed_version: 23.0.0, platform: None, project_name: setuptools, py_version: '2.7',
+  version: 23.0.0}
+- {key: simplegeneric, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.8.1,
+  platform: None, project_name: simplegeneric, py_version: '2.7', version: 0.8.1}
+- {key: singledispatch, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 3.4.0.3,
+  platform: None, project_name: singledispatch, py_version: '2.7', version: 3.4.0.3}
+- {key: six, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.10.0,
+  platform: None, project_name: six, py_version: '2.7', version: 1.10.0}
+- {key: snowballstemmer, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 1.2.1,
+  platform: None, project_name: snowballstemmer, py_version: '2.7', version: 1.2.1}
+- {key: sphinx, location: 'c:\anaconda\envs\alpha\lib\site-packages\sphinx-1.4.1-py2.7.egg',
+  parsed_version: 1.4.1, platform: None, project_name: sphinx, py_version: '2.7',
+  version: 1.4.1}
+- {key: sphinx-rtd-theme, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.1.9,
+  platform: None, project_name: sphinx-rtd-theme, py_version: '2.7', version: 0.1.9}
+- {key: spyder, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 2.3.9,
+  platform: None, project_name: spyder, py_version: '2.7', version: 2.3.9}
+- {key: tornado, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: '4.3',
+  platform: None, project_name: tornado, py_version: '2.7', version: '4.3'}
+- {key: traitlets, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 4.2.1,
+  platform: None, project_name: traitlets, py_version: '2.7', version: 4.2.1}
+- {key: wheel, location: 'c:\anaconda\envs\alpha\lib\site-packages', parsed_version: 0.29.0,
+  platform: None, project_name: wheel, py_version: '2.7', version: 0.29.0}
+PkgutilModules: [IPython, PyQt4, _pytest, alabaster, aniso8601, argh, babel, backports,
+  bokeh, bsddb, click, colorama, compiler, concurrent, coverage, ctypes, curses, dateutil,
+  distutils, docutils, email, encodings, flask, flask_restful, funcsigs, functools32,
+  hotshot, idlelib, imagesize, importlib, ipykernel, ipython_genutils, ipywidgets,
+  jedi, jinja2, json, jsonschema, jupyter_client, jupyter_console, jupyter_core, lib2to3,
+  logging, markupsafe, mock, msilib, multiprocessing, nbconvert, nbformat, notebook,
+  numpy, pandas, pbr, pip, pkg_resources, psutil, py, pydoc_data, pyenvcolla, pyflakes,
+  pygments, pyreadline, pytz, qtconsole, requests, rope, setuptools, snowballstemmer,
+  sphinx, sphinx_rtd_theme, spyderlib, spyderplugins, sqlite3, tests, tornado, traitlets,
+  unittest, werkzeug, wheel, wsgiref, xml, yaml, zmq]
+Platform: [Windows-10-10.0.14393, 'Intel64 Family 6 Model 78 Stepping 3, GenuineIntel',
+  64bit, WindowsPE]
+SysApiVersion: 1013
+SysByteOrder: little
+SysExecutable: C:\Anaconda\envs\alpha\python.exe
+SysFloatInfo: ['1.79769313486e+308', '1024', '308', '2.22507385851e-308', '-1021',
+  '-307', '15', '53', '2.22044604925e-16', '2', '1']
+SysPath: ['C:\projects\pyenvcolla\pyenvcolla', 'C:\projects\pyenvcolla', 'C:\Anaconda\envs\alpha\python27.zip',
+  'C:\Anaconda\envs\alpha\DLLs', 'C:\Anaconda\envs\alpha\lib', 'C:\Anaconda\envs\alpha\lib\plat-win',
+  'C:\Anaconda\envs\alpha\lib\lib-tk', 'C:\Anaconda\envs\alpha', 'c:\anaconda\envs\alpha\lib\site-packages\sphinx-1.4.1-py2.7.egg',
+  'c:\anaconda\envs\alpha\lib\site-packages\setuptools-23.0.0-py2.7.egg', 'C:\Anaconda\envs\alpha\lib\site-packages']
+SysPlatform: win32
+SysVersion: 2.7.12 |Continuum Analytics, Inc.| (default, Jun 29 2016, 11:07:13) [MSC
+  v.1500 64 bit (AMD64)]
+SysVersionInfo: {major: 2, micro: 12, minor: 7, releaselevel: final, serial: 0}
+TimeZone: ['18000', Eastern Standard Time, Eastern Daylight Time]

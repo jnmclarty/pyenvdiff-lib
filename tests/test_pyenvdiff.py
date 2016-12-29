@@ -95,7 +95,7 @@ class TestEnvironment(object):
     def teardown_class(cls):
         pass
 
-class TestEnvironment(object):
+class TestEnvironments(object):
     def test_identical_environments_match(self):
         env1 = Environment()
         env2 = Environment()
@@ -152,7 +152,16 @@ class TestEnvironment(object):
 
         msg = "Reinstantiated Environments should match!"
         assert EnvironmentDiff(env1, env3).as_bool(), msg
-
+    def test_non_matching_environment_serialization(self):
+        env_a = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "a.yaml"))
+        env_b = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "b.yaml"))
+        ed = EnvironmentDiff(env_a, env_b)
+        out = ed.for_json()
+        assert type(str(ed)) is str
+        assert len(out.keys()) == len(collector_classes)
+        assert set(out['SysPath'].keys()).issuperset(set(['comparison', 'left', 'matching', 'right']))
+        assert not out['SysPath']['matching'], "Based on the two files, these shouldn't match"
+        assert out['SysPlatform']['matching'], "Based on the two files, these should match"
 
 class TestPost(object):
     @classmethod
