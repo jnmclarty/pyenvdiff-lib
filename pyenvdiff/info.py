@@ -2,14 +2,66 @@
 
 # We shouldn't have any import errors here, they should be inside
 # any given class, to maximize compatibility.
-
-
+from pyenvdiff.collectors import collector_classes, collector_class_lookup, CollectorDiff
 from pyenvdiff import __version__
-
-from pyenvdiff.collectors import collector_classes, collector_class_lookup
 
 
 DEBUG = False
+
+
+class EnvironmentDiff(object):
+    def __init__(self, env_left, env_right):
+        self.env_l = env_left
+        self.env_r = env_right
+
+        self.results = {}
+
+        all_keys = list(env_left.collectors.keys()) + list(env_right.collectors.keys())
+        self.keys = list(set(all_keys))
+        self.keys.sort()
+
+
+        for key in self.keys:
+            coll_left = env_left[key]
+            coll_right = env_right[key]
+            self.results[key] = CollectorDiff(coll_left, coll_right)
+        if DEBUG:
+            print("Done Comparing")
+    def __str__(self):
+        out = []
+        for key in self.keys:
+
+            result = str(self.results[key])
+
+            if len(result.split("\n")) > 1:
+                out.append("\n" + key)
+                out.append("*" * len(key))
+                out.append(result)
+            else:
+                one_line = "\n" + key + " : " + result
+                out.append(one_line)
+                out.append("*" * len(one_line))
+
+        return "\n".join(out)
+
+    def as_bool(self):
+        ans = [self.results[k].as_bool() for k in self.keys]
+        return all(ans)
+    def for_json(self, collectors=None, include_matching=True):
+        out = {}
+
+        if collectors is None:
+            collectors = list(self.results.keys())
+        elif isinstance(collectors, (str)):
+            collectors = [collectors]
+
+        for col in collectors:
+            col_diff = self.results[col]
+            col_diff = col_diff.for_json()
+            if include_matching or (not col_diff['matching']):
+                out[col] = col_diff
+        return out
+
 
 class Environment():
     def __init__(self, collectors=None):
@@ -72,7 +124,10 @@ class Environment():
     def from_yaml(fname):
         with open(fname, 'r') as infile:
             return Environment._from_yaml_fs(infile)
+
+
 if __name__ == '__main__':
     env = Environment()
     env.to_yaml("try_it.yaml")
     env2 = Environment.from_yaml("try_it.yaml")
+    print(EnvironmentDiff(env, env2))
