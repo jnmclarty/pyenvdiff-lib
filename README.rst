@@ -50,10 +50,10 @@ Programmatic Usage
    
     >>> from pyenvdiff import Environment
     
-    >>> e = Environment(); 
-    >>> e.to_yaml('my_env.yaml'); 
+    >>> e = Environment()
+    >>> e.to_yaml('my_env.yaml')
     
-    >>> o = Environment.from_yaml('other_env.yaml');
+    >>> o = Environment.from_yaml('other_env.yaml')
     
     >>> e == o
     True

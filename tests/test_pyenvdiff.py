@@ -106,7 +106,7 @@ class TestEnvironments(object):
         env1 = Environment()
         env2 = Environment()
         ed = EnvironmentDiff(env1, env2)
-        assert str(ed).count("Matching!") == len(collector_classes), "Every collector should match, even erroneous one"
+        assert str(ed).count("MATCHING") == len(collector_classes), "Every collector should match, even erroneous one"
 
     @pt.mark.parametrize("CollectorClass", collector_classes)
     def test_non_matching_collectors(self, CollectorClass):
