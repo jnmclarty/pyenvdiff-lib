@@ -12,11 +12,12 @@ import mock
 import pytest as pt
 import inspect
 import sys
+import os
 
 import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
 from pyenvdiff.info import Environment, EnvironmentDiff
-from pyenvdiff.post import get_available_parser_name_and_class, send
+from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url
 
 class PythonVersion(object):
     def __init__(self):
@@ -220,3 +221,17 @@ class TestPost(object):
 
         msg = send(self.env)
         assert "123" in msg
+
+    def test_get_server_url_unset(self):
+        with mock.patch.dict(os.environ, {}):
+            assert get_server_url() == 'https://osapi.pyenvdiff.com'
+
+    @pt.mark.parametrize("pyenvserver_envvar,expected_server", [
+        ('DEFAULT', 'https://osapi.pyenvdiff.com'),
+        ('LOCAL', 'http://localhost:8080'),
+        ('http://someserver.com', 'http://someserver.com')
+    ])
+    def test_get_server_url(self, pyenvserver_envvar, expected_server):
+
+        with mock.patch.dict(os.environ, {'PYENVDIFF_SERVER': pyenvserver_envvar}):
+            assert get_server_url() == expected_server

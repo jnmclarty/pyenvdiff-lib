@@ -1,12 +1,32 @@
 # -*- coding: utf-8 -*-
 
-from . import __version__
+from .version import __version__
 from .info import Environment
-from .import_macros import import_json, import_urllib_x
+from .import_macros import import_os, import_json, import_urllib_x
 
+os = import_os()
 json = import_json()
 Request, urlopen = import_urllib_x()
 
+
+def get_server_url():
+    DEFAULT_SERVER = 'https://osapi.pyenvdiff.com'
+    LOCAL_SERVER = 'http://localhost:8080'
+
+    server = DEFAULT_SERVER
+
+    try:
+        setting = os.environ.get('PYENVDIFF_SERVER', None)
+        if (setting.upper() == 'DEFAULT') or (setting is None):
+            pass # server = DEFAULT_SERVER
+        elif (setting.upper() == 'LOCAL'):
+            server = LOCAL_SERVER
+        else:
+            server = setting
+    except:
+        pass
+
+    return server
 
 def send(environment,
          organization=None,
@@ -35,8 +55,11 @@ def send(environment,
     data = json.dumps(data)
     data = data.encode('utf-8')
     clen = len(data)
-    req = Request('http://127.0.0.1:8080/', data,
-                  {'Content-Type': 'application/json', 'Content-Length': clen})
+
+    server = get_server_url()
+
+    print("Posting environment information to " + server)
+    req = Request(server, data, {'Content-Type': 'application/json', 'Content-Length': clen})
 
     f = urlopen(req)
     response = f.read()
