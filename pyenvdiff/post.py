@@ -9,6 +9,23 @@ json = import_json()
 Request, urlopen = import_urllib_x()
 
 
+def get_api_key():
+    DEFAULT_API_KEY = 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
+
+    api_key = DEFAULT_API_KEY
+
+    try:
+        setting = os.environ.get('PYENVDIFF_API_KEY', None)
+        if (setting.upper() == 'DEFAULT') or (setting is None):
+            pass  # server = DEFAULT_API_KEY
+        else:
+            api_key = setting
+    except:
+        pass
+
+    return api_key
+
+
 def get_server_url():
     DEFAULT_SERVER = 'https://osapi.pyenvdiff.com'
     LOCAL_SERVER = 'http://localhost:8080'
@@ -18,7 +35,7 @@ def get_server_url():
     try:
         setting = os.environ.get('PYENVDIFF_SERVER', None)
         if (setting.upper() == 'DEFAULT') or (setting is None):
-            pass # server = DEFAULT_SERVER
+            pass  # server = DEFAULT_SERVER
         elif (setting.upper() == 'LOCAL'):
             server = LOCAL_SERVER
         else:
@@ -27,6 +44,7 @@ def get_server_url():
         pass
 
     return server
+
 
 def send(environment,
          organization=None,
@@ -57,9 +75,14 @@ def send(environment,
     clen = len(data)
 
     server = get_server_url()
+    api_key = get_api_key()
 
     print("Posting environment information to " + server)
-    req = Request(server, data, {'Content-Type': 'application/json', 'Content-Length': clen})
+    print("Using API KEY: " + api_key[:6] + "...")
+
+    req = Request(server + "/submit", data, {'x-api-key': api_key,
+                                             'Content-Type': 'application/json',
+                                             'Content-Length': clen})
 
     f = urlopen(req)
     response = f.read()
@@ -69,8 +92,8 @@ def send(environment,
     f.close()
 
     if response['result'] == 'OK':
-        sha = response['sha']
-        return "Successful POST, use %s for reference or comparison." % sha
+        iid = response['id']
+        return "Successful POST, use ID# %s for reference or comparison." % iid
     else:
         return response
 
@@ -101,8 +124,7 @@ def get_available_parser_name_and_class():
             module_name = 'getopt'
             Parser = getopt.getopt  # Awkward, but...compatible
         except:
-            print(
-                "Couldn't find getopt, arguments won't be parsed; ignoring all arguments")
+            print("Couldn't find getopt, arguments won't be parsed; ignoring all arguments")
 
     return module_name, Parser
 
@@ -116,7 +138,7 @@ def execute_parsing_engine(parser_module_name, Parser):
                  ('d', 'domain', 'The domain of your company or application.'),
                  ('a', 'application', 'Your application name, use quotes for spaces'),
                  ('v', 'version', 'Your application version, use quotes for spaces'),
-                 ('t', 'tags',  'Tags seperated by commas. Foo,MyApp Dev,Bar,Boo -> [\'Foo\', \'My Dev\', \'Bar\', \'Boo\']')]  # noqa: 501
+                 ('t', 'tags',  'Tags seperated by commas. Foo,MyApp Dev,Bar,Boo -> [\'Foo\', \'My Dev\', \'Bar\', \'Boo\']')]  # noqa: E501
 
     arg_char, arg_full, arg_desc = zip(*args_info)
 

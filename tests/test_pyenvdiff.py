@@ -17,7 +17,7 @@ import os
 import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
 from pyenvdiff.info import Environment, EnvironmentDiff
-from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url
+from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url, get_api_key
 
 class PythonVersion(object):
     def __init__(self):
@@ -169,9 +169,11 @@ class TestPost(object):
     def setup_class(cls):
         cls.env = Environment()
 
+
     def test_get_available_parser_name_and_class(self):
         parser_name, Parser = get_available_parser_name_and_class()
         assert parser_name in ('argparse', 'optparse', 'getopt')
+
 
     """ TODO: Figure out how to properly test this
     def test_execute_parsing_engine(self):
@@ -180,8 +182,8 @@ class TestPost(object):
         print(args)
     """
 
-    def test_getting_optparse(self):
 
+    def test_getting_optparse(self):
         def import_mock(name, *args):
             if name == 'argparse':
                 raise ImportError("Argparse not found")
@@ -191,8 +193,8 @@ class TestPost(object):
             name, Cls = get_available_parser_name_and_class()
             assert name == 'optparse'
 
-    def test_getting_getopt(self):
 
+    def test_getting_getopt(self):
         def import_mock(name, *args):
             if name in ('optparse', 'argparse'):
                 raise ImportError("Latest parsers not found")
@@ -201,6 +203,7 @@ class TestPost(object):
         with mock.patch(builtin, side_effect=import_mock):
             name, Cls = get_available_parser_name_and_class()
             assert name == 'getopt'
+
 
     @mock.patch('pyenvdiff.post.Request')
     @mock.patch('pyenvdiff.post.urlopen')
@@ -222,9 +225,25 @@ class TestPost(object):
         msg = send(self.env)
         assert "123" in msg
 
+
+    def test_get_api_key_unset(self):
+        with mock.patch.dict(os.environ, {}):
+            assert get_api_key() == 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
+
+
+    @pt.mark.parametrize("pyenvapikey_envvar,expected_apikey", [
+        ('DEFAULT', 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'),
+        ('123', '123')
+    ])
+    def test_get_api_key(self, pyenvapikey_envvar, expected_apikey):
+        with mock.patch.dict(os.environ, {'PYENVDIFF_API_KEY': pyenvapikey_envvar}):
+            assert get_api_key() == expected_apikey
+
+
     def test_get_server_url_unset(self):
         with mock.patch.dict(os.environ, {}):
             assert get_server_url() == 'https://osapi.pyenvdiff.com'
+
 
     @pt.mark.parametrize("pyenvserver_envvar,expected_server", [
         ('DEFAULT', 'https://osapi.pyenvdiff.com'),
