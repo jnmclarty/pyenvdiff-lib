@@ -1,4 +1,5 @@
-#We're not catching ImportError because that class might not exist in all versions of python.
+# We're not catching ImportError because that class might not exist in all
+# versions of python.
 
 compatibility = "This flavour of python isn't compatible with pyenvdiff, yet.  "
 instructions = "Please file an issue at github.com/jnmclarty/pyenvdiff.  "
@@ -9,9 +10,12 @@ def import_warn():
         from warnings import warn
     except:
         print("You have no modern warnings library, using print instead.")
+
         def warn(text):
             print(text)
     return warn
+
+
 warn = import_warn()
 
 
@@ -30,12 +34,14 @@ def import_json():
         warn("Couldn't import json.  " + compatibility + instructions)
     return json
 
+
 def import_os():
     try:
         import os
     except:
         warn("Couldn't import os.  " + compatibility + instructions)
     return os
+
 
 def import_urllib_x():
     sys = import_sys()
@@ -45,8 +51,10 @@ def import_urllib_x():
         else:
             from urllib.request import Request, urlopen
     except:
-        warn("Couldn't import Request & urlopen.  " + compatibility + instructions)
+        warn("Couldn't import Request & urlopen.  " +
+             compatibility + instructions)
     return Request, urlopen
+
 
 def import_yaml():
     try:

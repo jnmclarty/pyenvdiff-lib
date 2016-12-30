@@ -3,24 +3,24 @@
 # We shouldn't have any import errors here, they should be inside
 # any given class, to maximize compatibility.
 from .collectors import collector_classes, collector_class_lookup, CollectorDiff
-from . import __version__
-
+from .version import __version__
 from .import_macros import import_sys, import_yaml
 
 DEBUG = False
 
 
 class EnvironmentDiff(object):
+
     def __init__(self, env_left, env_right):
         self.env_l = env_left
         self.env_r = env_right
 
         self.results = {}
 
-        all_keys = list(env_left.collectors.keys()) + list(env_right.collectors.keys())
+        all_keys = list(env_left.collectors.keys()) + \
+            list(env_right.collectors.keys())
         self.keys = list(set(all_keys))
         self.keys.sort()
-
 
         for key in self.keys:
             coll_left = env_left[key]
@@ -28,6 +28,7 @@ class EnvironmentDiff(object):
             self.results[key] = CollectorDiff(coll_left, coll_right)
         if DEBUG:
             print("Done Comparing")
+
     def __str__(self):
         out = []
         for key in self.keys:
@@ -48,6 +49,7 @@ class EnvironmentDiff(object):
     def as_bool(self):
         ans = [self.results[k].as_bool() for k in self.keys]
         return all(ans)
+
     def for_json(self, collectors=None, include_matching=True):
         out = {}
 
@@ -65,6 +67,7 @@ class EnvironmentDiff(object):
 
 
 class Environment():
+
     def __init__(self, collectors=None):
 
         if collectors:
@@ -74,14 +77,16 @@ class Environment():
 
             for CollectorClass in collector_classes:
                 self.collectors[CollectorClass.__name__] = CollectorClass()
+
     def __getitem__(self, name):
         return self.collectors.get(name, None)
 
     def info(self):
         out = {}
-        for k,d in self.collectors.items():
+        for k, d in self.collectors.items():
             out[k] = d.info
         return out
+
     def __str__(self):
         out = []
         info_sets = [self.collectors]
@@ -95,11 +100,13 @@ class Environment():
                 out.append("*" * len(key))
                 out.append(str(info_set[key]))
         return "\n".join(out)
+
     def _to_yaml_fs(self, outfilestream):
         yaml = import_yaml()
-        outfilestream.write("# PyEnvColla Environment File v%s\n" % str(__version__))
+        outfilestream.write(
+            "# PyEnvDiff Environment File v%s\n" % str(__version__))
         yaml.dump(self.info(), outfilestream)
-        
+
     @staticmethod
     def _from_yaml_fs(outfilestream):
         yaml = import_yaml()
@@ -111,10 +118,10 @@ class Environment():
         collected_info = {}
         for collector_name in an_env_dict.keys():
             CollectorClass = collector_class_lookup[collector_name]
-            collected_info[collector_name] = CollectorClass.from_dict(an_env_dict)
+            collected_info[collector_name] = CollectorClass.from_dict(
+                an_env_dict)
 
         return Environment(collected_info)
-
 
     def to_yaml(self, fname):
         with open(fname, 'w') as outfile:
@@ -129,12 +136,12 @@ class Environment():
 if __name__ == '__main__':
     env = Environment()
     print(env)
-    
+
     sys = import_sys()
-    
+
     # We're not going to expand on this, in order to maintain compatibility.
     args = sys.argv
     if len(args) > 1:
         fname = args[1]
         env.to_yaml(fname)
-        print ("\nStored yaml version of environment information to " + fname)
+        print("\nStored yaml version of environment information to " + fname)
