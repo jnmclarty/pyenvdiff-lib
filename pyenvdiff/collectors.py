@@ -1,11 +1,11 @@
 
-from pyenvdiff.import_macros import import_sys
+from .import_macros import import_sys
 
 def _compatible_pad(a_string="", a_char=">", width=80):
     l = len(a_string)
     return a_string + (a_char * (width - l))
 _cp = _compatible_pad
-    
+
 class CollectorDiff(object):
     def __init__(self, coll_left, coll_right):
         self.coll_l = coll_left

@@ -2,10 +2,10 @@
 
 # We shouldn't have any import errors here, they should be inside
 # any given class, to maximize compatibility.
-from pyenvdiff.collectors import collector_classes, collector_class_lookup, CollectorDiff
-from pyenvdiff import __version__
+from .collectors import collector_classes, collector_class_lookup, CollectorDiff
+from . import __version__
 
-from import_macros import import_sys, import_yaml
+from .import_macros import import_sys, import_yaml
 
 DEBUG = False
 
