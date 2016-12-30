@@ -47,3 +47,10 @@ def import_urllib_x():
     except:
         warn("Couldn't import Request & urlopen.  " + compatibility + instructions)
     return Request, urlopen
+
+def import_yaml():
+    try:
+        import yaml
+    except:
+        warn("Coundn't import yaml.  " + compatibility + instructions)
+    return yaml

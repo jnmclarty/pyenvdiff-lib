@@ -13,12 +13,32 @@ PyEnvDiff
     :target: http://pyenvdiff.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/jnmclarty/pyenvdiff/shield.svg
-     :target: https://pyup.io/repos/github/jnmclarty/pyenvdiff/
-     :alt: Updates
 
+Python environment comparison tool.  Maximized for compatibility between
+python forks, 2.6 to 3.7, pypy, and more!
 
-Python environment comparison tool.
+Usage Options
+-------------
+
+From the command line, to get information on the current environment:
+``
+python -m pyenvdiff.info
+``
+
+Serialize the information to a file...
+``
+python -m pyenvdiff.info my_environment.yaml
+``
+
+Switch to another environment (you'll need pyenvdiff installed in both)
+``
+python -m pyenvdiff.compare my_environment.yaml
+``
+
+Or compare two from any environment
+``
+python -m pyenvdiff.compare my_environment.yaml my_other_environment.yaml
+``
 
 Sooo much room for activities!
 ------------------------------
@@ -32,9 +52,9 @@ Sooo much room for activities!
 Installation
 ------------
 
-```
+``
 pip install pyenvdiff 
-```
+``
 
 OR just copy & paste pyenvdiff anywhere on PYTHONPATH
 

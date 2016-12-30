@@ -5,6 +5,7 @@
 from pyenvdiff.collectors import collector_classes, collector_class_lookup, CollectorDiff
 from pyenvdiff import __version__
 
+from import_macros import import_sys, import_yaml
 
 DEBUG = False
 
@@ -40,7 +41,7 @@ class EnvironmentDiff(object):
             else:
                 one_line = "\n" + key + " : " + result
                 out.append(one_line)
-                out.append("*" * len(one_line))
+                out.append("*" * (len(one_line) - 1))
 
         return "\n".join(out)
 
@@ -95,15 +96,14 @@ class Environment():
                 out.append(str(info_set[key]))
         return "\n".join(out)
     def _to_yaml_fs(self, outfilestream):
-        import yaml
+        yaml = import_yaml()
         outfilestream.write("# PyEnvColla Environment File v%s\n" % str(__version__))
         yaml.dump(self.info(), outfilestream)
+        
     @staticmethod
     def _from_yaml_fs(outfilestream):
-        import yaml
-
+        yaml = import_yaml()
         env_collected_info = yaml.load(outfilestream)
-
         return Environment.from_dict(env_collected_info)
 
     @staticmethod
@@ -128,6 +128,13 @@ class Environment():
 
 if __name__ == '__main__':
     env = Environment()
-    env.to_yaml("try_it.yaml")
-    env2 = Environment.from_yaml("try_it.yaml")
-    print(EnvironmentDiff(env, env2))
+    print(env)
+    
+    sys = import_sys()
+    
+    # We're not going to expand on this, in order to maintain compatibility.
+    args = sys.argv
+    if len(args) > 1:
+        fname = args[1]
+        env.to_yaml(fname)
+        print ("\nStored yaml version of environment information to " + fname)

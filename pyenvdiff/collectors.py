@@ -1,6 +1,11 @@
 
 from pyenvdiff.import_macros import import_sys
 
+def _compatible_pad(a_string="", a_char=">", width=80):
+    l = len(a_string)
+    return a_string + (a_char * (width - l))
+_cp = _compatible_pad
+    
 class CollectorDiff(object):
     def __init__(self, coll_left, coll_right):
         self.coll_l = coll_left
@@ -10,15 +15,15 @@ class CollectorDiff(object):
         return self.matching
     def __str__(self):
         if self.matching:
-            return "Matching!"
+            return _cp("MATCHING  ","!", 77 - len(self.coll_l.__class__.__name__))
         else:
             out = []
-            out.append("Does not match")
-            out.append("LEFT:   " + ">" * 20)
+            out.append(_cp("DOES NOT MATCH  ","!"))
+            out.append(_cp("LEFT:           "))
             out.append(str(self.coll_l))
-            out.append("RIGHT:  " + ">" * 20)
+            out.append(_cp("RIGHT:          ", "<"))
             out.append(str(self.coll_r))
-            out.append("<>" * 20)
+            out.append(_cp(a_char="=<*>=", width=16))
         return "\n".join(out)
     def for_json(self):
         out = {"matching" : self.matching,
