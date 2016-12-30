@@ -17,28 +17,54 @@ PyEnvDiff
 Python environment comparison tool.  Maximized for compatibility between
 python forks, 2.6 to 3.7, pypy, and more!
 
-Usage Options
+Command Usage
 -------------
 
 From the command line, to get information on the current environment:
-``
-python -m pyenvdiff.info
-``
+::
+
+    python -m pyenvdiff.info
+
 
 Serialize the information to a file...
-``
-python -m pyenvdiff.info my_environment.yaml
-``
+::
+
+    python -m pyenvdiff.info my_environment.yaml
+
 
 Switch to another environment (you'll need pyenvdiff installed in both)
-``
-python -m pyenvdiff.compare my_environment.yaml
-``
+:: 
+
+    python -m pyenvdiff.compare my_environment.yaml
+
 
 Or compare two from any environment
-``
-python -m pyenvdiff.compare my_environment.yaml my_other_environment.yaml
-``
+::
+
+    python -m pyenvdiff.compare my_environment.yaml my_other_environment.yaml
+    
+
+Programmatic Usage
+------------------
+.. code-block:: python
+   
+    >>> from pyenvdiff import Environment
+    
+    >>> e = Environment(); 
+    >>> e.to_yaml('my_env.yaml'); 
+    
+    >>> o = Environment.from_yaml('other_env.yaml');
+    
+    >>> e == o
+    True
+    
+    >>> print(e)
+    ... # prints a dump of the environment details
+    
+    >>> from pyenvdiff import EnvironmentDiff
+    >>> ed = EnvironmentDiff(e, o)
+    >>> print(ed)
+    ... # prints a diff of the two environments
 
 Sooo much room for activities!
 ------------------------------
