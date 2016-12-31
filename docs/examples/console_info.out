@@ -1,0 +1,151 @@
+
+OSUname
+*******
+Linux pyenvdiff-dev 3.19.0-25-generic #26~14.04.1-Ubuntu SMP Fri Jul 24 21:16:20 UTC 2015 x86_64
+
+PipDistributions
+****************
+flask 0.11.1 0.11.1 Flask None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+flask-cors 3.0.2 3.0.2 Flask-Cors None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+jinja2 2.8 2.8 Jinja2 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+markupsafe 0.23 0.23 MarkupSafe None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+pyyaml 3.12 3.12 PyYAML None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+unidecode 0.4.19 0.4.19 Unidecode None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+werkzeug 0.11.11 0.11.11 Werkzeug None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+argcomplete 1.7.0 1.7.0 argcomplete None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+base58 0.2.4 0.2.4 base58 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+boto3 1.4.2 1.4.2 boto3 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+botocore 1.4.87 1.4.87 botocore None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+click 6.6 6.6 click None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+docutils 0.13.1 0.13.1 docutils None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+futures 3.0.5 3.0.5 futures None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+hjson 2.0.2 2.0.2 hjson None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+itsdangerous 0.24 0.24 itsdangerous None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+jmespath 0.9.0 0.9.0 jmespath None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+kappa 0.6.0 0.6.0 kappa None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+lambda-packages 0.11.0 0.11.0 lambda-packages None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+pip 9.0.1 9.0.1 pip None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+placebo 0.8.1 0.8.1 placebo None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+psycopg2 2.6.2 2.6.2 psycopg2 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+pyenvdiff 0.1.0 0.1.0 pyenvdiff None None /home/jmclarty/pyenvdiff-lib
+python-dateutil 2.6.0 2.6.0 python-dateutil None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+python-slugify 1.2.1 1.2.1 python-slugify None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+requests 2.12.4 2.12.4 requests None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+s3transfer 0.1.10 0.1.10 s3transfer None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+setuptools 30.2.0 30.2.0 setuptools None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+six 1.10.0 1.10.0 six None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+toml 0.9.2 0.9.2 toml None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+tqdm 4.10.0 4.10.0 tqdm None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+troposphere 1.9.0 1.9.0 troposphere None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+wheel 0.29.0 0.29.0 wheel None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+wsgi-request-logger 0.4.6 0.4.6 wsgi-request-logger None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+zappa 0.32.1 0.32.1 zappa None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+
+PkgutilModules
+**************
+argcomplete
+boto3
+botocore
+bsddb
+click
+compiler
+concurrent
+ctypes
+curses
+dateutil
+distutils
+docutils
+email
+encodings
+ensurepip
+flask
+flask_cors
+hjson
+hotshot
+idlelib
+importlib
+jinja2
+jmespath
+json
+kappa
+lambda_packages
+lib2to3
+logging
+markupsafe
+multiprocessing
+pip
+pkg_resources
+placebo
+psycopg2
+pydoc_data
+pyenvdiff
+requestlogger
+requests
+s3transfer
+setuptools
+slugify
+sqlite3
+test
+tests
+tqdm
+troposphere
+unidecode
+unittest
+werkzeug
+wheel
+wsgiref
+xml
+yaml
+zappa
+
+Platform
+********
+Linux-3.19.0-25-generic-x86_64-with-debian-jessie-sid | x86_64 | 64bit | ELF
+
+SysApiVersion
+*************
+1013
+
+SysByteOrder
+************
+little
+
+SysExecutable
+*************
+/home/jmclarty/.pyenv/versions/pedzap/bin/python
+
+SysFloatInfo
+************
+1.79769313486e+308 1024 308 2.22507385851e-308 -1021 -307 15 53 2.22044604925e-16 2 1
+
+SysPath
+*******
+
+/home/jmclarty/.pyenv/versions/pedzap/lib/python27.zip
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/plat-linux2
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-tk
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-old
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-dynload
+/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7
+/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/plat-linux2
+/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/lib-tk
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/site-packages
+/home/jmclarty/pyenvdiff-lib
+
+SysPlatform
+***********
+linux2
+
+SysVersion
+**********
+2.7.12 (default, Dec  3 2016, 18:02:30) 
+[GCC 4.8.4]
+
+SysVersionInfo
+**************
+2.7.12.final.0
+
+TimeZone
+********
+18000 | EST | EDT
