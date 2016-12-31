@@ -1,6 +1,6 @@
 
 from .import_macros import import_sys
-
+from .compat import supported_info_types
 
 def _compatible_pad(a_string="", a_char=">", width=80):
     l = len(a_string)
@@ -87,7 +87,7 @@ class Collector(object):
         return True
 
     def _basic_content_check(self, oth):
-        if isinstance(oth.info, (int, str, list, dict)):
+        if isinstance(oth.info, supported_info_types):
             return self.info == oth.info
         else:
             msg = "Comparison between {self} from {self!r}"

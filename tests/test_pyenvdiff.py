@@ -18,6 +18,40 @@ import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
 from pyenvdiff.info import Environment, EnvironmentDiff
 from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url, get_api_key
+from pyenvdiff.compat import supported_info_types
+
+
+mock_supported_info_instances = []
+
+try:
+    mock_supported_info_instances.append(False)
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(-555)
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(str("Non Matching"))
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(unicode("Non Matching"))
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(["a", "b", "c"])
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append({"a" : "A", "b" : "B"})
+except:
+    pass
 
 class PythonVersion(object):
     def __init__(self):
@@ -115,16 +149,12 @@ class TestEnvironments(object):
         env2 = Environment()
 
         actual_collector_type = type(env1.collectors[CollectorClass.__name__].info)
+        
+        type_map = dict(zip(supported_info_types, mock_supported_info_instances))
 
-        if actual_collector_type == int:
-            non_matching_info = -5555
-        elif actual_collector_type == str:
-            non_matching_info = "Something that doesn't match"
-        elif actual_collector_type == list:
-            non_matching_info = "Something that doesn't match".split(" ")
-        elif actual_collector_type == dict:
-            non_matching_info = {'Something' : "that", 'does not' : "match"}
-        else:
+        non_matching_info = type_map.get(actual_collector_type, None)
+        
+        if non_matching_info is None:
             msg = "Every possible type of info should be handled, %s of %s is not."
             raise Exception(msg  % (actual_collector_type, CollectorClass))
 
