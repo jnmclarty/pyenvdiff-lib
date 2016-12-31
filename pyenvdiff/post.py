@@ -8,9 +8,11 @@ os = import_os()
 json = import_json()
 Request, urlopen = import_urllib_x()
 
-
+DEFAULT_SERVER = 'https://osa.pyenvdiff.com'
+LOCAL_SERVER = 'http://localhost:8080'
+DEFAULT_API_KEY = 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
+    
 def get_api_key():
-    DEFAULT_API_KEY = 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
 
     api_key = DEFAULT_API_KEY
 
@@ -27,8 +29,6 @@ def get_api_key():
 
 
 def get_server_url():
-    DEFAULT_SERVER = 'https://osapi.pyenvdiff.com'
-    LOCAL_SERVER = 'http://localhost:8080'
 
     server = DEFAULT_SERVER
 

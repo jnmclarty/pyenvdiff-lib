@@ -18,6 +18,7 @@ import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
 from pyenvdiff.info import Environment, EnvironmentDiff
 from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url, get_api_key
+from pyenvdiff.post import DEFAULT_SERVER, LOCAL_SERVER, DEFAULT_API_KEY
 from pyenvdiff.compat import supported_info_types
 
 
@@ -241,7 +242,7 @@ class TestPost(object):
 
         class FakeFileStream(object):
             def read(self):
-                data = '{"result" : "OK", "sha" : "123"}'
+                data = '{"result" : "OK", "id" : "123"}'
                 if python_version['3']:
                     return data.encode('utf-8')
                 return data
@@ -258,11 +259,11 @@ class TestPost(object):
 
     def test_get_api_key_unset(self):
         with mock.patch.dict(os.environ, {}):
-            assert get_api_key() == 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
+            assert get_api_key() == DEFAULT_API_KEY
 
 
     @pt.mark.parametrize("pyenvapikey_envvar,expected_apikey", [
-        ('DEFAULT', 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'),
+        ('DEFAULT', DEFAULT_API_KEY),
         ('123', '123')
     ])
     def test_get_api_key(self, pyenvapikey_envvar, expected_apikey):
@@ -272,12 +273,12 @@ class TestPost(object):
 
     def test_get_server_url_unset(self):
         with mock.patch.dict(os.environ, {}):
-            assert get_server_url() == 'https://osapi.pyenvdiff.com'
+            assert get_server_url() == 'https://osa.pyenvdiff.com'
 
 
     @pt.mark.parametrize("pyenvserver_envvar,expected_server", [
-        ('DEFAULT', 'https://osapi.pyenvdiff.com'),
-        ('LOCAL', 'http://localhost:8080'),
+        ('DEFAULT', DEFAULT_SERVER),
+        ('LOCAL', LOCAL_SERVER),
         ('http://someserver.com', 'http://someserver.com')
     ])
     def test_get_server_url(self, pyenvserver_envvar, expected_server):
