@@ -47,13 +47,14 @@ def import_urllib_x():
     sys = import_sys()
     try:
         if sys.version_info[0] < 3:
-            from urllib2 import Request, urlopen
+            from urllib2 import Request, urlopen, HTTPError
         else:
             from urllib.request import Request, urlopen
+            from urllib.error import HTTPError
     except:
         warn("Couldn't import Request & urlopen.  " +
              compatibility + instructions)
-    return Request, urlopen
+    return Request, urlopen, HTTPError
 
 
 def import_yaml():

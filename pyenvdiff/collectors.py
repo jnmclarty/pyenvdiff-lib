@@ -37,6 +37,7 @@ class CollectorDiff(object):
         out = {"matching": self.matching,
                "left": self.coll_l.for_web(),
                "right": self.coll_r.for_web(),
+               "english" : self.coll_l.english,
                "comparison": None}
 
         if not self.matching:

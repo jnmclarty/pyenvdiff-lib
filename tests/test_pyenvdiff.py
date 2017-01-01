@@ -150,11 +150,11 @@ class TestEnvironments(object):
         env2 = Environment()
 
         actual_collector_type = type(env1.collectors[CollectorClass.__name__].info)
-        
+
         type_map = dict(zip(supported_info_types, mock_supported_info_instances))
 
         non_matching_info = type_map.get(actual_collector_type, None)
-        
+
         if non_matching_info is None:
             msg = "Every possible type of info should be handled, %s of %s is not."
             raise Exception(msg  % (actual_collector_type, CollectorClass))
@@ -242,7 +242,7 @@ class TestPost(object):
 
         class FakeFileStream(object):
             def read(self):
-                data = '{"result" : "OK", "id" : "123"}'
+                data = '{"result" : "OK", "sha" : "123", "message" : "Good to Go!" }'
                 if python_version['3']:
                     return data.encode('utf-8')
                 return data
@@ -254,7 +254,7 @@ class TestPost(object):
         urlopen.return_value = FakeFileStream()
 
         msg = send(self.env)
-        assert "123" in msg
+        assert "Good to Go!" in msg
 
 
     def test_get_api_key_unset(self):
