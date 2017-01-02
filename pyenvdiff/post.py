@@ -1,11 +1,49 @@
 # -*- coding: utf-8 -*-
 
-from . import __version__
+from .version import __version__
 from .info import Environment
-from .import_macros import import_json, import_urllib_x
+from .import_macros import import_os, import_json, import_urllib_x
 
+os = import_os()
 json = import_json()
-Request, urlopen = import_urllib_x()
+Request, urlopen, HTTPError = import_urllib_x()
+
+DEFAULT_SERVER = 'https://osa.pyenvdiff.com'
+LOCAL_SERVER = 'http://localhost:8080'
+DEFAULT_API_KEY = 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
+
+def get_api_key():
+
+    api_key = DEFAULT_API_KEY
+
+    try:
+        setting = os.environ.get('PYENVDIFF_API_KEY', None)
+        if (setting.upper() == 'DEFAULT') or (setting is None):
+            pass  # server = DEFAULT_API_KEY
+        else:
+            api_key = setting
+    except:
+        pass
+
+    return api_key
+
+
+def get_server_url():
+
+    server = DEFAULT_SERVER
+
+    try:
+        setting = os.environ.get('PYENVDIFF_SERVER', None)
+        if (setting.upper() == 'DEFAULT') or (setting is None):
+            pass  # server = DEFAULT_SERVER
+        elif (setting.upper() == 'LOCAL'):
+            server = LOCAL_SERVER
+        else:
+            server = setting
+    except:
+        pass
+
+    return server
 
 
 def send(environment,
@@ -20,6 +58,12 @@ def send(environment,
          tags=None):
     data = {'pyenvdiff_version': __version__}
 
+    try:
+        from datetime import datetime as dt # make an import macro for this
+        date = dt.now().isoformat()
+    except:
+        date = None
+
     data['user_meta'] = {'organization': organization,
                          'group': group,
                          'subgroup': subgroup,
@@ -28,28 +72,57 @@ def send(environment,
                          'domain': domain,
                          'application': application,
                          'version': version,
-                         'tags': tags}
-
+                         'tags': tags,
+                         'date': date}
+    
     data['environment'] = environment.info()
 
     data = json.dumps(data)
     data = data.encode('utf-8')
     clen = len(data)
-    req = Request('http://127.0.0.1:8080/', data,
-                  {'Content-Type': 'application/json', 'Content-Length': clen})
 
-    f = urlopen(req)
+    server = get_server_url()
+    api_key = get_api_key()
+
+    print("Posting environment information to " + server)
+
+    if api_key == DEFAULT_API_KEY:
+        print("Attempting to use the demo API KEY.  It's throttled.  If this fails, consider requesting your own.")
+        print("Once you have your own, set an environment variable PYENVDIFF_API_KEY to your API key.")
+    else:
+        print("Using API KEY: " + api_key[:6] + "...")
+
+
+    req = Request(server + "/submit", data, {'x-api-key': api_key,
+                                             'Content-Type': 'application/json',
+                                             'Content-Length': clen})
+
+    try:
+        f = urlopen(req)
+    except HTTPError as e:
+        if e.code == 429:
+            print("You are getting throttled.  Try again later.")
+            if api_key == DEFAULT_API_KEY:
+                print("You are using the demo API KEY.  You can try again in a moment, or request your own API KEY.")
+            else:
+                print("Even the personal API KEYs have limits.  What are you doing?  Let the maintainer know, he might boost your API limit.")
+            return ""
+        else:
+            return "HTTPError: " + str(e.code) + ". Are you using the latest release? Yes? File a github issue if this keeps happening"
+
     response = f.read()
 
     response = json.loads(response.decode('utf-8'))
 
     f.close()
 
-    if response['result'] == 'OK':
+    if response.get('result', None) == 'OK':
         sha = response['sha']
-        return "Successful POST, use %s for reference or comparison." % sha
-    else:
-        return response
+
+        print("Successful POST, use SHA %s for reference or comparison." % sha)
+        print("Eg. http://pyenvdiff.com/view.html?sha=%s" % sha)
+
+    return response.get("message", "No message provided. Something strange happened on the server.  This shouldn't happen. Please file a github issue. " + str(response))
 
 
 def get_available_parser_name_and_class():
@@ -78,8 +151,7 @@ def get_available_parser_name_and_class():
             module_name = 'getopt'
             Parser = getopt.getopt  # Awkward, but...compatible
         except:
-            print(
-                "Couldn't find getopt, arguments won't be parsed; ignoring all arguments")
+            print("Couldn't find getopt, arguments won't be parsed; ignoring all arguments")
 
     return module_name, Parser
 
@@ -93,7 +165,7 @@ def execute_parsing_engine(parser_module_name, Parser):
                  ('d', 'domain', 'The domain of your company or application.'),
                  ('a', 'application', 'Your application name, use quotes for spaces'),
                  ('v', 'version', 'Your application version, use quotes for spaces'),
-                 ('t', 'tags',  'Tags seperated by commas. Foo,MyApp Dev,Bar,Boo -> [\'Foo\', \'My Dev\', \'Bar\', \'Boo\']')]  # noqa: 501
+                 ('t', 'tags',  'Tags seperated by commas. Foo,MyApp Dev,Bar,Boo -> [\'Foo\', \'My Dev\', \'Bar\', \'Boo\']')]  # noqa: E501
 
     arg_char, arg_full, arg_desc = zip(*args_info)
 

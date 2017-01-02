@@ -12,11 +12,47 @@ import mock
 import pytest as pt
 import inspect
 import sys
+import os
 
 import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
 from pyenvdiff.info import Environment, EnvironmentDiff
-from pyenvdiff.post import get_available_parser_name_and_class, send
+from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url, get_api_key
+from pyenvdiff.post import DEFAULT_SERVER, LOCAL_SERVER, DEFAULT_API_KEY
+from pyenvdiff.compat import supported_info_types
+
+
+mock_supported_info_instances = []
+
+try:
+    mock_supported_info_instances.append(False)
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(-555)
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(str("Non Matching"))
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(unicode("Non Matching"))
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append(["a", "b", "c"])
+except:
+    pass
+
+try:
+    mock_supported_info_instances.append({"a" : "A", "b" : "B"})
+except:
+    pass
 
 class PythonVersion(object):
     def __init__(self):
@@ -115,15 +151,11 @@ class TestEnvironments(object):
 
         actual_collector_type = type(env1.collectors[CollectorClass.__name__].info)
 
-        if actual_collector_type == int:
-            non_matching_info = -5555
-        elif actual_collector_type == str:
-            non_matching_info = "Something that doesn't match"
-        elif actual_collector_type == list:
-            non_matching_info = "Something that doesn't match".split(" ")
-        elif actual_collector_type == dict:
-            non_matching_info = {'Something' : "that", 'does not' : "match"}
-        else:
+        type_map = dict(zip(supported_info_types, mock_supported_info_instances))
+
+        non_matching_info = type_map.get(actual_collector_type, None)
+
+        if non_matching_info is None:
             msg = "Every possible type of info should be handled, %s of %s is not."
             raise Exception(msg  % (actual_collector_type, CollectorClass))
 
@@ -168,9 +200,11 @@ class TestPost(object):
     def setup_class(cls):
         cls.env = Environment()
 
+
     def test_get_available_parser_name_and_class(self):
         parser_name, Parser = get_available_parser_name_and_class()
         assert parser_name in ('argparse', 'optparse', 'getopt')
+
 
     """ TODO: Figure out how to properly test this
     def test_execute_parsing_engine(self):
@@ -179,8 +213,8 @@ class TestPost(object):
         print(args)
     """
 
-    def test_getting_optparse(self):
 
+    def test_getting_optparse(self):
         def import_mock(name, *args):
             if name == 'argparse':
                 raise ImportError("Argparse not found")
@@ -190,8 +224,8 @@ class TestPost(object):
             name, Cls = get_available_parser_name_and_class()
             assert name == 'optparse'
 
-    def test_getting_getopt(self):
 
+    def test_getting_getopt(self):
         def import_mock(name, *args):
             if name in ('optparse', 'argparse'):
                 raise ImportError("Latest parsers not found")
@@ -201,13 +235,14 @@ class TestPost(object):
             name, Cls = get_available_parser_name_and_class()
             assert name == 'getopt'
 
+
     @mock.patch('pyenvdiff.post.Request')
     @mock.patch('pyenvdiff.post.urlopen')
     def test_send_basic(self, urlopen, Request):
 
         class FakeFileStream(object):
             def read(self):
-                data = '{"result" : "OK", "sha" : "123"}'
+                data = '{"result" : "OK", "sha" : "123", "message" : "Good to Go!" }'
                 if python_version['3']:
                     return data.encode('utf-8')
                 return data
@@ -219,4 +254,34 @@ class TestPost(object):
         urlopen.return_value = FakeFileStream()
 
         msg = send(self.env)
-        assert "123" in msg
+        assert "Good to Go!" in msg
+
+
+    def test_get_api_key_unset(self):
+        with mock.patch.dict(os.environ, {}):
+            assert get_api_key() == DEFAULT_API_KEY
+
+
+    @pt.mark.parametrize("pyenvapikey_envvar,expected_apikey", [
+        ('DEFAULT', DEFAULT_API_KEY),
+        ('123', '123')
+    ])
+    def test_get_api_key(self, pyenvapikey_envvar, expected_apikey):
+        with mock.patch.dict(os.environ, {'PYENVDIFF_API_KEY': pyenvapikey_envvar}):
+            assert get_api_key() == expected_apikey
+
+
+    def test_get_server_url_unset(self):
+        with mock.patch.dict(os.environ, {}):
+            assert get_server_url() == 'https://osa.pyenvdiff.com'
+
+
+    @pt.mark.parametrize("pyenvserver_envvar,expected_server", [
+        ('DEFAULT', DEFAULT_SERVER),
+        ('LOCAL', LOCAL_SERVER),
+        ('http://someserver.com', 'http://someserver.com')
+    ])
+    def test_get_server_url(self, pyenvserver_envvar, expected_server):
+
+        with mock.patch.dict(os.environ, {'PYENVDIFF_SERVER': pyenvserver_envvar}):
+            assert get_server_url() == expected_server
