@@ -1,0 +1,357 @@
+
+OSUname
+*******
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Error attempting to collect (OSUname): 'module' object has no attribute 'uname'
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Linux pyenvdiff-dev 3.19.0-25-generic #26~14.04.1-Ubuntu SMP Fri Jul 24 21:16:20 UTC 2015 x86_64
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+PipDistributions
+****************
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+babel 2.3.3 2.3.3 Babel None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+flask 0.11.1 0.11.1 Flask None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+flask-restful 0.3.5 0.3.5 Flask-RESTful None None c:\anaconda\envs\alpha\lib\site-packages
+jinja2 2.8 2.8 Jinja2 None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+markupsafe 0.23 0.23 MarkupSafe None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pyyaml 3.11 3.11 PyYAML None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pygments 2.1.3 2.1.3 Pygments None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+werkzeug 0.10.4 0.10.4 Werkzeug None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+alabaster 0.7.8 0.7.8 alabaster None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+aniso8601 1.1.0 1.1.0 aniso8601 None None c:\anaconda\envs\alpha\lib\site-packages
+argh 0.26.2 0.26.2 argh None None c:\anaconda\envs\alpha\lib\site-packages
+backports-abc 0.4 0.4 backports-abc None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+backports.shutil-get-terminal-size 1.0.0 1.0.0 backports.shutil-get-terminal-size None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+backports.ssl-match-hostname 3.4.0.2 3.4.0.2 backports.ssl-match-hostname None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+bokeh 0.12.2 0.12.2 bokeh None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+click 6.6 6.6 click None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+colorama 0.3.7 0.3.7 colorama None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+configparser 3.5.0b2 3.5.0b2 configparser None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+coverage 4.2 4.2 coverage None None c:\anaconda\envs\alpha\lib\site-packages
+decorator 4.0.10 4.0.10 decorator None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+docutils 0.12 0.12 docutils None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+funcsigs 1.0.2 1.0.2 funcsigs None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+functools32 3.2.3.post2 3.2.3.post2 functools32 None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+futures 3.0.5 3.0.5 futures None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+imagesize 0.7.1 0.7.1 imagesize None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+ipykernel 4.3.1 4.3.1 ipykernel None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+ipython 4.2.0 4.2.0 ipython None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+ipython-genutils 0.1.0 0.1.0 ipython-genutils None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+ipywidgets 4.1.1 4.1.1 ipywidgets None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+itsdangerous 0.24 0.24 itsdangerous None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+jedi 0.9.0 0.9.0 jedi None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+jsonschema 2.5.1 2.5.1 jsonschema None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+jupyter 1.0.0 1.0.0 jupyter None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+jupyter-client 4.3.0 4.3.0 jupyter-client None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+jupyter-console 4.1.1 4.1.1 jupyter-console None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+jupyter-core 4.1.0 4.1.0 jupyter-core None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+mistune 0.7.2 0.7.2 mistune None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+mock 2.0.0 2.0.0 mock None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+nbconvert 4.2.0 4.2.0 nbconvert None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+nbformat 4.0.1 4.0.1 nbformat None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+notebook 4.2.1 4.2.1 notebook None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+numpy 1.11.0 1.11.0 numpy None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pandas 0.18.1 0.18.1 pandas None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+path.py 0.0.0 0.0.0 path.py None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pathlib2 2.1.0 2.1.0 pathlib2 None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pbr 1.10.0 1.10.0 pbr None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pep8 1.7.0 1.7.0 pep8 None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pickleshare 0.7.2 0.7.2 pickleshare None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pip 8.1.2 8.1.2 pip None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+psutil 4.3.0 4.3.0 psutil None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+py 1.4.31 1.4.31 py None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pyenvcolla 0.1.0 0.1.0 pyenvcolla None None c:\projects\pyenvcolla
+pyflakes 1.2.3 1.2.3 pyflakes None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pyreadline 2.1 2.1 pyreadline None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pytest 3.0.3 3.0.3 pytest None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+python-dateutil 2.5.3 2.5.3 python-dateutil None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pytz 2016.4 2016.4 pytz None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+pyzmq 15.2.0 15.2.0 pyzmq None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+qtconsole 4.2.1 4.2.1 qtconsole None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+requests 2.11.1 2.11.1 requests None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+rope 0.9.4 0.9.4 rope None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+setuptools 23.0.0 23.0.0 setuptools None 2.7 c:\anaconda\envs\alpha\lib\site-packages\setuptools-23.0.0-py2.7.egg
+simplegeneric 0.8.1 0.8.1 simplegeneric None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+singledispatch 3.4.0.3 3.4.0.3 singledispatch None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+six 1.10.0 1.10.0 six None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+snowballstemmer 1.2.1 1.2.1 snowballstemmer None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+sphinx 1.4.1 1.4.1 sphinx None 2.7 c:\anaconda\envs\alpha\lib\site-packages\sphinx-1.4.1-py2.7.egg
+sphinx-rtd-theme 0.1.9 0.1.9 sphinx-rtd-theme None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+spyder 2.3.9 2.3.9 spyder None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+tornado 4.3 4.3 tornado None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+traitlets 4.2.1 4.2.1 traitlets None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+wheel 0.29.0 0.29.0 wheel None 2.7 c:\anaconda\envs\alpha\lib\site-packages
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flask 0.11.1 0.11.1 Flask None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+flask-cors 3.0.2 3.0.2 Flask-Cors None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+jinja2 2.8 2.8 Jinja2 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+markupsafe 0.23 0.23 MarkupSafe None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+pyyaml 3.12 3.12 PyYAML None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+unidecode 0.4.19 0.4.19 Unidecode None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+werkzeug 0.11.11 0.11.11 Werkzeug None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+base58 0.2.4 0.2.4 base58 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+boto3 1.4.1 1.4.1 boto3 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+botocore 1.4.80 1.4.80 botocore None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+click 6.6 6.6 click None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+docutils 0.12 0.12 docutils None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+futures 3.0.5 3.0.5 futures None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+hjson 2.0.2 2.0.2 hjson None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+itsdangerous 0.24 0.24 itsdangerous None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+jmespath 0.9.0 0.9.0 jmespath None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+kappa 0.6.0 0.6.0 kappa None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+lambda-packages 0.10.0 0.10.0 lambda-packages None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+pip 9.0.1 9.0.1 pip None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+placebo 0.8.1 0.8.1 placebo None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+psycopg2 2.6.2 2.6.2 psycopg2 None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+pyenvdiff 0.1.0 0.1.0 pyenvdiff None None /home/jmclarty/pyenvdiff-lib
+python-dateutil 2.6.0 2.6.0 python-dateutil None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+python-slugify 1.2.1 1.2.1 python-slugify None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+requests 2.12.3 2.12.3 requests None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+s3transfer 0.1.9 0.1.9 s3transfer None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+setuptools 30.2.0 30.2.0 setuptools None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+six 1.10.0 1.10.0 six None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+tqdm 4.10.0 4.10.0 tqdm None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+troposphere 1.9.0 1.9.0 troposphere None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+wheel 0.29.0 0.29.0 wheel None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+wsgi-request-logger 0.4.6 0.4.6 wsgi-request-logger None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+zappa 0.31.0 0.31.0 zappa None None /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+PkgutilModules
+**************
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+IPython
+PyQt4
+_pytest
+alabaster
+aniso8601
+argh
+babel
+backports
+bokeh
+bsddb
+click
+colorama
+compiler
+concurrent
+coverage
+ctypes
+curses
+dateutil
+distutils
+docutils
+email
+encodings
+flask
+flask_restful
+funcsigs
+functools32
+hotshot
+idlelib
+imagesize
+importlib
+ipykernel
+ipython_genutils
+ipywidgets
+jedi
+jinja2
+json
+jsonschema
+jupyter_client
+jupyter_console
+jupyter_core
+lib2to3
+logging
+markupsafe
+mock
+msilib
+multiprocessing
+nbconvert
+nbformat
+notebook
+numpy
+pandas
+pbr
+pip
+pkg_resources
+psutil
+py
+pydoc_data
+pyenvcolla
+pyflakes
+pygments
+pyreadline
+pytz
+qtconsole
+requests
+rope
+setuptools
+snowballstemmer
+sphinx
+sphinx_rtd_theme
+spyderlib
+spyderplugins
+sqlite3
+tests
+tornado
+traitlets
+unittest
+werkzeug
+wheel
+wsgiref
+xml
+yaml
+zmq
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+boto3
+botocore
+bsddb
+click
+compiler
+concurrent
+ctypes
+curses
+dateutil
+distutils
+docutils
+email
+encodings
+ensurepip
+flask
+flask_cors
+hjson
+hotshot
+idlelib
+importlib
+jinja2
+jmespath
+json
+kappa
+lambda_packages
+lib2to3
+logging
+markupsafe
+multiprocessing
+pip
+pkg_resources
+placebo
+psycopg2
+pydoc_data
+pyenvdiff
+requestlogger
+requests
+s3transfer
+setuptools
+slugify
+sqlite3
+test
+tests
+tqdm
+troposphere
+unidecode
+unittest
+werkzeug
+wheel
+wsgiref
+xml
+yaml
+zappa
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+Platform
+********
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Windows-10-10.0.14393 | Intel64 Family 6 Model 78 Stepping 3, GenuineIntel | 64bit | WindowsPE
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Linux-3.19.0-25-generic-x86_64-with-debian-jessie-sid | x86_64 | 64bit | ELF
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+SysApiVersion : MATCHING  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+********************************************************************************
+
+SysByteOrder : MATCHING  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+********************************************************************************
+
+SysExecutable
+*************
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+C:\Anaconda\envs\alpha\python.exe
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+/home/jmclarty/.pyenv/versions/pedzap/bin/python
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+SysFloatInfo : MATCHING  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+********************************************************************************
+
+SysPath
+*******
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+C:\projects\pyenvcolla\pyenvcolla
+C:\projects\pyenvcolla
+C:\Anaconda\envs\alpha\python27.zip
+C:\Anaconda\envs\alpha\DLLs
+C:\Anaconda\envs\alpha\lib
+C:\Anaconda\envs\alpha\lib\plat-win
+C:\Anaconda\envs\alpha\lib\lib-tk
+C:\Anaconda\envs\alpha
+c:\anaconda\envs\alpha\lib\site-packages\sphinx-1.4.1-py2.7.egg
+c:\anaconda\envs\alpha\lib\site-packages\setuptools-23.0.0-py2.7.egg
+C:\Anaconda\envs\alpha\lib\site-packages
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+/home/jmclarty/.pyenv/versions/pedzap/lib/python27.zip
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/plat-linux2
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-tk
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-old
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-dynload
+/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7
+/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/plat-linux2
+/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/lib-tk
+/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/site-packages
+/home/jmclarty/pyenvdiff-lib
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+SysPlatform
+***********
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+win32
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+linux2
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+SysVersion
+**********
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2.7.12 |Continuum Analytics, Inc.| (default, Jun 29 2016, 11:07:13) [MSC v.1500 64 bit (AMD64)]
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2.7.12 (default, Dec  3 2016, 18:02:30) 
+[GCC 4.8.4]
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+SysVersionInfo
+**************
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+2.7.12.0.final
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2.7.12.final.0
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=
+
+TimeZone
+********
+DOES NOT MATCH  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+LEFT:           >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+18000 | Eastern Standard Time | Eastern Daylight Time
+RIGHT:          <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+18000 | EST | EDT
+=<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>==<*>=

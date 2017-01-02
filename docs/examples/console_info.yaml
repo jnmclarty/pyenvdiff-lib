@@ -1,0 +1,118 @@
+# PyEnvDiff Environment File v0.1.0
+OSUname: 'Linux pyenvdiff-dev 3.19.0-25-generic #26~14.04.1-Ubuntu SMP Fri Jul 24
+  21:16:20 UTC 2015 x86_64'
+PipDistributions:
+- {key: flask, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.11.1, platform: None, project_name: Flask, py_version: None, version: 0.11.1}
+- {key: flask-cors, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 3.0.2, platform: None, project_name: Flask-Cors, py_version: None,
+  version: 3.0.2}
+- {key: jinja2, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: '2.8', platform: None, project_name: Jinja2, py_version: None, version: '2.8'}
+- {key: markupsafe, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: '0.23', platform: None, project_name: MarkupSafe, py_version: None,
+  version: '0.23'}
+- {key: pyyaml, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: '3.12', platform: None, project_name: PyYAML, py_version: None,
+  version: '3.12'}
+- {key: unidecode, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.4.19, platform: None, project_name: Unidecode, py_version: None,
+  version: 0.4.19}
+- {key: werkzeug, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.11.11, platform: None, project_name: Werkzeug, py_version: None,
+  version: 0.11.11}
+- {key: argcomplete, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 1.7.0, platform: None, project_name: argcomplete, py_version: None,
+  version: 1.7.0}
+- {key: base58, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.2.4, platform: None, project_name: base58, py_version: None, version: 0.2.4}
+- {key: boto3, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 1.4.2, platform: None, project_name: boto3, py_version: None, version: 1.4.2}
+- {key: botocore, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 1.4.87, platform: None, project_name: botocore, py_version: None,
+  version: 1.4.87}
+- {key: click, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: '6.6', platform: None, project_name: click, py_version: None, version: '6.6'}
+- {key: docutils, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.13.1, platform: None, project_name: docutils, py_version: None,
+  version: 0.13.1}
+- {key: futures, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 3.0.5, platform: None, project_name: futures, py_version: None,
+  version: 3.0.5}
+- {key: hjson, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 2.0.2, platform: None, project_name: hjson, py_version: None, version: 2.0.2}
+- {key: itsdangerous, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: '0.24', platform: None, project_name: itsdangerous, py_version: None,
+  version: '0.24'}
+- {key: jmespath, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.9.0, platform: None, project_name: jmespath, py_version: None,
+  version: 0.9.0}
+- {key: kappa, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.6.0, platform: None, project_name: kappa, py_version: None, version: 0.6.0}
+- {key: lambda-packages, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.11.0, platform: None, project_name: lambda-packages, py_version: None,
+  version: 0.11.0}
+- {key: pip, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 9.0.1, platform: None, project_name: pip, py_version: None, version: 9.0.1}
+- {key: placebo, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.8.1, platform: None, project_name: placebo, py_version: None,
+  version: 0.8.1}
+- {key: psycopg2, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 2.6.2, platform: None, project_name: psycopg2, py_version: None,
+  version: 2.6.2}
+- {key: pyenvdiff, location: /home/jmclarty/pyenvdiff-lib, parsed_version: 0.1.0,
+  platform: None, project_name: pyenvdiff, py_version: None, version: 0.1.0}
+- {key: python-dateutil, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 2.6.0, platform: None, project_name: python-dateutil, py_version: None,
+  version: 2.6.0}
+- {key: python-slugify, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 1.2.1, platform: None, project_name: python-slugify, py_version: None,
+  version: 1.2.1}
+- {key: requests, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 2.12.4, platform: None, project_name: requests, py_version: None,
+  version: 2.12.4}
+- {key: s3transfer, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.1.10, platform: None, project_name: s3transfer, py_version: None,
+  version: 0.1.10}
+- {key: setuptools, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 30.2.0, platform: None, project_name: setuptools, py_version: None,
+  version: 30.2.0}
+- {key: six, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 1.10.0, platform: None, project_name: six, py_version: None, version: 1.10.0}
+- {key: toml, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.9.2, platform: None, project_name: toml, py_version: None, version: 0.9.2}
+- {key: tqdm, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 4.10.0, platform: None, project_name: tqdm, py_version: None, version: 4.10.0}
+- {key: troposphere, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 1.9.0, platform: None, project_name: troposphere, py_version: None,
+  version: 1.9.0}
+- {key: wheel, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.29.0, platform: None, project_name: wheel, py_version: None, version: 0.29.0}
+- {key: wsgi-request-logger, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.4.6, platform: None, project_name: wsgi-request-logger, py_version: None,
+  version: 0.4.6}
+- {key: zappa, location: /home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages,
+  parsed_version: 0.32.1, platform: None, project_name: zappa, py_version: None, version: 0.32.1}
+PkgutilModules: [argcomplete, boto3, botocore, bsddb, click, compiler, concurrent,
+  ctypes, curses, dateutil, distutils, docutils, email, encodings, ensurepip, flask,
+  flask_cors, hjson, hotshot, idlelib, importlib, jinja2, jmespath, json, kappa, lambda_packages,
+  lib2to3, logging, markupsafe, multiprocessing, pip, pkg_resources, placebo, psycopg2,
+  pydoc_data, pyenvdiff, requestlogger, requests, s3transfer, setuptools, slugify,
+  sqlite3, test, tests, tqdm, troposphere, unidecode, unittest, werkzeug, wheel, wsgiref,
+  xml, yaml, zappa]
+Platform: [Linux-3.19.0-25-generic-x86_64-with-debian-jessie-sid, x86_64, 64bit, ELF]
+SysApiVersion: 1013
+SysByteOrder: little
+SysExecutable: /home/jmclarty/.pyenv/versions/pedzap/bin/python
+SysFloatInfo: ['1.79769313486e+308', '1024', '308', '2.22507385851e-308', '-1021',
+  '-307', '15', '53', '2.22044604925e-16', '2', '1']
+SysPath: ['', /home/jmclarty/.pyenv/versions/pedzap/lib/python27.zip, /home/jmclarty/.pyenv/versions/pedzap/lib/python2.7,
+  /home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/plat-linux2, /home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-tk,
+  /home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-old, /home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-dynload,
+  /home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7, /home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/plat-linux2,
+  /home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/lib-tk, /home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/site-packages,
+  /home/jmclarty/pyenvdiff-lib]
+SysPlatform: linux2
+SysVersion: "2.7.12 (default, Dec  3 2016, 18:02:30) \n[GCC 4.8.4]"
+SysVersionInfo: {major: 2, micro: 12, minor: 7, releaselevel: 0, serial: final}
+TimeZone: ['18000', EST, EDT]
