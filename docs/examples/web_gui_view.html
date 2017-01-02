@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PyEnvDiff - Environment View</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./web_gui_view_files/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./web_gui_view_files/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./web_gui_view_files/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="static/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./web_gui_view_files/ie-emulation-modes-warning.js.download"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul id="sidebar" class="nav nav-sidebar"><li id="OSUnameNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#OSUnameAnchor" class="btn btn-xs btn-info">OSUname</a></li><li id="PipDistributionsNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#PipDistributionsAnchor" class="btn btn-xs btn-info">PipDistributions</a></li><li id="PkgutilModulesNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#PkgutilModulesAnchor" class="btn btn-xs btn-info">PkgutilModules</a></li><li id="PlatformNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#PlatformAnchor" class="btn btn-xs btn-info">Platform</a></li><li id="SysApiVersionNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysApiVersionAnchor" class="btn btn-xs btn-info">SysApiVersion</a></li><li id="SysByteOrderNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysByteOrderAnchor" class="btn btn-xs btn-info">SysByteOrder</a></li><li id="SysExecutableNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysExecutableAnchor" class="btn btn-xs btn-info">SysExecutable</a></li><li id="SysFloatInfoNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysFloatInfoAnchor" class="btn btn-xs btn-info">SysFloatInfo</a></li><li id="SysPathNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysPathAnchor" class="btn btn-xs btn-info">SysPath</a></li><li id="SysPlatformNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysPlatformAnchor" class="btn btn-xs btn-info">SysPlatform</a></li><li id="SysVersionNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysVersionAnchor" class="btn btn-xs btn-info">SysVersion</a></li><li id="SysVersionInfoNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#SysVersionInfoAnchor" class="btn btn-xs btn-info">SysVersionInfo</a></li><li id="TimeZoneNav"><a role="button" href="file:///C:/projects/pyenvdiff-ui/view.html?sha=f9ae533c0b40a04c41fc1b6fc74177ba#TimeZoneAnchor" class="btn btn-xs btn-info">TimeZone</a></li></ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Environment View</h1>
+          <div class="environment_meta" style="width:50%;">
+              <table class="table">
+                  <thead>
+                     <tr>
+                        <td id="switch_env_table_header"></td>
+                        <th id="right_env_table_header"></th>
+                     </tr>
+                  </thead> 
+                  <tbody id="env_table_body">
+                  <tr><td class="text-right">sha</td><td class="text-left">f9ae533c0b40a04c41fc1b6fc74177ba</td></tr><tr><td class="text-right">application</td><td class="text-left">pedzap</td></tr><tr><td class="text-right">date</td><td class="text-left">2017-01-02T06:24:37.421743</td></tr><tr><td class="text-right">domain</td><td class="text-left">pyenvdiff.com</td></tr><tr><td class="text-right">email</td><td class="text-left">me@pyenvdiff.com</td></tr><tr><td class="text-right">tags</td><td class="text-left">what,am,i,try</td></tr></tbody>
+
+              </table>
+          </div>
+          <div class="compare" style="width:75%">
+          Compare against another environment, using it's SHA:
+          <form class="form-inline" action="http://pyenvdiff.com/compare.html">
+  <div class="form-group">
+    <label for="LeftSHA">SHA</label>
+    <input type="text" class="form-control" id="LeftSHA" name="left" placeholder="NA">
+    <input type="hidden" name="right" value="f9ae533c0b40a04c41fc1b6fc74177ba" id="RightSHA">
+  </div>
+  <button type="submit" class="btn btn-primary">Compare</button>
+</form>
+          </div>
+          <div class="collectors">
+          <div><a name="OSUnameAnchor">&nbsp;</a></div><div id="OSUnameequality" class="col-md-1"></div><div id="OSUnameheader" class="col-md-11"><h3 class="sub-header">os.uname() Information</h3></div><div id="OSUname" class="col-md-12"><div class="well">Linux pyenvdiff-dev 3.19.0-25-generic #26~14.04.1-Ubuntu SMP Fri Jul 24 21:16:20 UTC 2015 x86_64</div></div><div><a name="PipDistributionsAnchor">&nbsp;</a></div><div id="PipDistributionsequality" class="col-md-1"></div><div id="PipDistributionsheader" class="col-md-11"><h3 class="sub-header">Pip Installed Distributions</h3></div><div id="PipDistributions" class="col-md-12"><div class="well">Flask 0.11.1 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>Flask-Cors 3.0.2 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>Jinja2 2.8 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>MarkupSafe 0.23 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>PyYAML 3.12 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>Unidecode 0.4.19 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>Werkzeug 0.11.11 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>argcomplete 1.7.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>base58 0.2.4 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>boto3 1.4.2 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>botocore 1.4.87 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>chardet 2.3.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>click 6.6 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>docutils 0.13.1 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>futures 3.0.5 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>ghdiff 0.4 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>hjson 2.0.2 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>itsdangerous 0.24 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>jmespath 0.9.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>kappa 0.6.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>lambda-packages 0.11.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>pip 9.0.1 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>placebo 0.8.1 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>psycopg2 2.6.2 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>pyenvdiff 0.1.0 (/home/jmclarty/pyenvdiff-lib) None<br>python-dateutil 2.6.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>python-slugify 1.2.1 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>requests 2.12.4 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>s3transfer 0.1.10 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>setuptools 30.2.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>six 1.10.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>toml 0.9.2 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>tqdm 4.10.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>troposphere 1.9.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>wheel 0.29.0 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>wsgi-request-logger 0.4.6 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None<br>zappa 0.32.1 (/home/jmclarty/.pyenv/versions/2.7.12/envs/pedzap/lib/python2.7/site-packages) None</div></div><div><a name="PkgutilModulesAnchor">&nbsp;</a></div><div id="PkgutilModulesequality" class="col-md-1"></div><div id="PkgutilModulesheader" class="col-md-11"><h3 class="sub-header">Pkgutil Modules</h3></div><div id="PkgutilModules" class="col-md-12"><div class="well">[u'argcomplete', u'boto3', u'botocore', u'bsddb', u'chardet', u'click', u'compiler', u'concurrent', u'ctypes', u'curses', u'dateutil', u'distutils', u'docutils', u'email', u'encodings', u'ensurepip', u'flask', u'flask_cors', u'hjson', u'hotshot', u'idlelib', u'importlib', u'jinja2', u'jmespath', u'json', u'kappa', u'lambda_packages', u'lib2to3', u'logging', u'markupsafe', u'multiprocessing', u'pip', u'pkg_resources', u'placebo', u'psycopg2', u'pydoc_data', u'pyenvdiff', u'requestlogger', u'requests', u's3transfer', u'setuptools', u'slugify', u'sqlite3', u'test', u'tests', u'tqdm', u'troposphere', u'unidecode', u'unittest', u'werkzeug', u'wheel', u'wsgiref', u'xml', u'yaml', u'zappa']</div></div><div><a name="PlatformAnchor">&nbsp;</a></div><div id="Platformequality" class="col-md-1"></div><div id="Platformheader" class="col-md-11"><h3 class="sub-header">Platform</h3></div><div id="Platform" class="col-md-12"><div class="well">[u'Linux-3.19.0-25-generic-x86_64-with-debian-jessie-sid', u'x86_64', u'64bit', u'ELF']</div></div><div><a name="SysApiVersionAnchor">&nbsp;</a></div><div id="SysApiVersionequality" class="col-md-1"></div><div id="SysApiVersionheader" class="col-md-11"><h3 class="sub-header">sys.api_version Information</h3></div><div id="SysApiVersion" class="col-md-12"><div class="well">1013</div></div><div><a name="SysByteOrderAnchor">&nbsp;</a></div><div id="SysByteOrderequality" class="col-md-1"></div><div id="SysByteOrderheader" class="col-md-11"><h3 class="sub-header">sys.byteorder Information</h3></div><div id="SysByteOrder" class="col-md-12"><div class="well">little</div></div><div><a name="SysExecutableAnchor">&nbsp;</a></div><div id="SysExecutableequality" class="col-md-1"></div><div id="SysExecutableheader" class="col-md-11"><h3 class="sub-header">sys.executable Information</h3></div><div id="SysExecutable" class="col-md-12"><div class="well">/home/jmclarty/.pyenv/versions/pedzap/bin/python</div></div><div><a name="SysFloatInfoAnchor">&nbsp;</a></div><div id="SysFloatInfoequality" class="col-md-1"></div><div id="SysFloatInfoheader" class="col-md-11"><h3 class="sub-header">sys.float_info Contents</h3></div><div id="SysFloatInfo" class="col-md-12"><div class="well">[u'1.79769313486e+308', u'1024', u'308', u'2.22507385851e-308', u'-1021', u'-307', u'15', u'53', u'2.22044604925e-16', u'2', u'1']</div></div><div><a name="SysPathAnchor">&nbsp;</a></div><div id="SysPathequality" class="col-md-1"></div><div id="SysPathheader" class="col-md-11"><h3 class="sub-header">sys.path Contents</h3></div><div id="SysPath" class="col-md-12"><div class="well"><br>/home/jmclarty/.pyenv/versions/pedzap/lib/python27.zip<br>/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7<br>/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/plat-linux2<br>/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-tk<br>/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-old<br>/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/lib-dynload<br>/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7<br>/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/plat-linux2<br>/home/jmclarty/.pyenv/versions/2.7.12/lib/python2.7/lib-tk<br>/home/jmclarty/.pyenv/versions/pedzap/lib/python2.7/site-packages<br>/home/jmclarty/pyenvdiff-lib</div></div><div><a name="SysPlatformAnchor">&nbsp;</a></div><div id="SysPlatformequality" class="col-md-1"></div><div id="SysPlatformheader" class="col-md-11"><h3 class="sub-header">sys.platform Information</h3></div><div id="SysPlatform" class="col-md-12"><div class="well">linux2</div></div><div><a name="SysVersionAnchor">&nbsp;</a></div><div id="SysVersionequality" class="col-md-1"></div><div id="SysVersionheader" class="col-md-11"><h3 class="sub-header">sys.version Information</h3></div><div id="SysVersion" class="col-md-12"><div class="well">2.7.12 (default, Dec  3 2016, 18:02:30) 
+[GCC 4.8.4]</div></div><div><a name="SysVersionInfoAnchor">&nbsp;</a></div><div id="SysVersionInfoequality" class="col-md-1"></div><div id="SysVersionInfoheader" class="col-md-11"><h3 class="sub-header">Interpreter Version Information</h3></div><div id="SysVersionInfo" class="col-md-12"><div class="well">{u'micro': 12, u'major': 2, u'releaselevel': 0, u'serial': u'final', u'minor': 7}</div></div><div><a name="TimeZoneAnchor">&nbsp;</a></div><div id="TimeZoneequality" class="col-md-1"></div><div id="TimeZoneheader" class="col-md-11"><h3 class="sub-header">Time Zone Information</h3></div><div id="TimeZone" class="col-md-12"><div class="well">[u'18000', u'EST', u'EDT']</div></div></div>
+                    
+          </div>
+      </div>
+    </div>
+    
+
+    <script>
+    // var api_server = 'http://localhost:8080';
+    var api_server = 'https://osa.pyenvdiff.com';
+    
+	function getParam( name )
+	{
+	 name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	 var regexS = "[\\?&]"+name+"=([^&#]*)";
+	 var regex = new RegExp( regexS );
+	 var results = regex.exec( window.location.href );
+	 if( results == null )
+	  return "";
+	else
+	 return results[1];
+	}
+
+    </script>
+    <script>
+
+    var xhrcm = new XMLHttpRequest();
+
+    right_sha = getParam('sha');
+    
+    hidden_field = document.getElementById("RightSHA");
+    hidden_field.value = right_sha;
+
+    sha_input_field = document.getElementById("LeftSHA");
+    sha_input_field.value = right_sha;
+    
+    xhrcm.open('GET', api_server + '/environment_meta/' + right_sha, true);
+    xhrcm.send();
+    
+    xhrcm.addEventListener("readystatechange", processEnvironmentMeta, false);
+
+    function processEnvironmentMeta(e) {
+        if (this.readyState == 4 && this.status == 200){
+            var resp = JSON.parse(this.responseText)
+            xhrcm.onreadystatechange = null; 
+
+            var right = resp['right'];       
+            var right_tbl_header = document.getElementById("right_env_table_header");
+
+            var tbody = document.getElementById("env_table_body"); 
+
+		var tr = document.createElement('tr');
+		var td = document.createElement('td');
+		td.className = "text-right";
+		td.innerHTML = "sha";
+		var tdr = document.createElement('td');
+		tdr.className = "text-left";
+		tdr.innerHTML = right_sha;
+
+		tr.appendChild(td);
+		tr.appendChild(tdr);
+		tbody.appendChild(tr);
+
+
+            
+		/* var tr = document.createElement('tr');
+		var td = document.createElement('td');
+		td.className = "text-right";
+		td.innerHTML = "date";
+		var tdr = document.createElement('td');
+		tdr.className = "text-left";
+		tdr.innerHTML = right['date'];
+
+		tr.appendChild(td);
+		tr.appendChild(tdr);
+		tbody.appendChild(tr); */
+
+        console.log("right: " + right);        
+        for (var key in right) {
+            if (!right.hasOwnProperty(key)) continue;
+
+            var value = right[key];
+            
+            if (!(value === null)) {
+            
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                        td.className = "text-right";
+                        td.innerHTML = key
+                var tdr = document.createElement('td');
+                        tdr.className = "text-left";
+                tdr.innerHTML = value;
+                  
+
+                tr.appendChild(td);
+                tr.appendChild(tdr);
+                tbody.appendChild(tr);
+                }
+            }
+
+        } 
+    }
+
+
+    </script>
+    <script>
+
+
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', api_server + '/collector_list/' + right_sha, true);
+    xhr.send();
+    
+    xhr.addEventListener("readystatechange", processRequest, false);
+
+    xhr.onreadystatechange = processEnvironmentAndMeta;
+
+    function processEnvironmentAndMeta(e) {
+        if (this.readyState == 4 && this.status == 200){
+            var collector_list = JSON.parse(this.responseText)
+            xhr.onreadystatechange = null; 
+                                          
+            var collectorsDiv = document.getElementsByClassName("collectors")[0];
+            
+            var sideBar = document.getElementById("sidebar");
+            sideBar.innerHTML = '';
+            
+            for (var i in collector_list) {
+                col = collector_list[i]
+
+                var link = '<li id=' + col + 'Nav></li>';
+                sideBar.innerHTML = sideBar.innerHTML + link;
+                                                   
+                var anchor = document.createElement('a');
+                // anchor.className = "collector-top-anchor" 
+                anchor.name = col+"Anchor";
+                anchor.innerHTML = "&nbsp;";
+                // anchor.style = "position:absolute; top:-100px;"
+
+                var anchorp = document.createElement('div');
+                // anchorp.style = "position:relative;"
+                anchorp.appendChild(anchor)
+                collectorsDiv.appendChild(anchorp);
+
+                // Area for actually putting the equality & header content of the diff.
+                var div = document.createElement('div');
+                div.id = col + "equality"
+                div.className = "col-md-1";
+                collectorsDiv.appendChild(div)
+
+                var div = document.createElement('div');
+                div.id = col + "header"
+                div.className = "col-md-11";
+                collectorsDiv.appendChild(div)
+
+                
+                // Area for actually putting the content of the diff.
+                var div = document.createElement('div');
+                div.id = col
+                div.className = "col-md-12";
+                collectorsDiv.appendChild(div);
+
+                var xhrc = new XMLHttpRequest();
+                xhrc.addEventListener("readystatechange", processRequest, false);
+                xhrc.onreadystatechange = processRequest;
+                xhrc.open('GET', api_server + '/view_one/' + col + '/' + right_sha, true);
+                xhrc.send();
+                    
+            }
+        }
+    }
+    
+    function processRequest(e) {
+        if (this.readyState == 4 && this.status == 200){
+            var resp = JSON.parse(this.responseText)
+            
+            if (resp.hasOwnProperty('collector_name')) {
+            
+                var col = resp['collector_name'];
+            
+                var collectorDivH = document.getElementById(col + "header");
+                collectorDivH.innerHTML = '';
+                
+                var header = document.createElement('h3');
+                header.className = "sub-header"
+                header.innerHTML = resp['collector_english']
+                // anchor.appendChild(header);
+                // collectorsDiv.appendChild(anchor);
+                collectorDivH.appendChild(header)
+
+                var collectorDivE = document.getElementById(col + "equality");
+                collectorDivE.innerHTML = '';
+
+                var collectorDiv = document.getElementById(col);
+                collectorDiv.innerHTML = '';
+                
+                var matchingButton = document.createElement('button');                        
+                matchingButton.setAttribute('type', "button");
+                
+
+                var navlink = document.getElementById(col + "Nav");
+                var navlink_a = document.createElement('a')
+                navlink_a.setAttribute('href', "#" + col + "Anchor")
+                navlink_a.innerHTML = col
+                navlink.innerHTML = '';
+                
+                var matchingButtonLink = document.createElement('a');                        
+                matchingButtonLink.setAttribute('role', "button");
+                matchingButtonLink.setAttribute('href', "#" + col + "Anchor")
+
+                    
+                    matchingButtonLink.innerHTML = col;
+                    matchingButtonLink.className = "btn btn-xs btn-info";
+
+                    var leftWell = document.createElement('div');
+                    leftWell.innerHTML = resp["right"];
+                    leftWell.className = "well";
+                    collectorDiv.appendChild(leftWell);
+
+                
+                // matchingButtonLink.setAttribute('style', "")
+                navlink.appendChild(matchingButtonLink)
+                // navlink.appendChild(navlink_a)
+            }
+        }
+    }
+        
+    </script>
+
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./web_gui_view_files/jquery.min.js.download"></script>
+    <script>window.jQuery || document.write('<script src="http://pyenvdiff.jeffreymclarty.com/static/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="./web_gui_view_files/bootstrap.min.js.download"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="./web_gui_view_files/holder.min.js.download"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./web_gui_view_files/ie10-viewport-bug-workaround.js.download"></script>
+  
+
+</body></html>
