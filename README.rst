@@ -14,8 +14,7 @@ PyEnvDiff
     :alt: Documentation Status
 
 
-Python environment comparison tool.  Maximized for compatibility between
-python forks, 2.6 to 3.7, pypy, and more!
+Python environment comparison tool.  Maximized for compatibility between versions 2.6 to 3.7, pypy, operating systems, distributions, and forks!  Virtualenv, pyenv, pyvenv, conda, system!
 
 Command Usage
 -------------
@@ -69,7 +68,9 @@ Programmatic Usage
 Web Usage
 ---------
 
-An alpha-level web-based comparison tool is available to browse and compare.  PyEnvDiff ships with a default API Key, which is severly throttled.  Some jerk is likely to abuse it, but until then, try it out.  API keys are manually issued by the maintainer.  You can get one by e-mailing, eg. "Hey, I'd like an API key.". :)  My e-mail is sprinkled in this repo, but also 
+An alpha-level web-based comparison tool is available to browse and compare.  PyEnvDiff ships with a default API Key, which is severly throttled.  Some jerk is likely to abuse it, but until then, try it out.  
+
+Get a `free personal API Key`_.
 
 Install your own API key by setting a global environment variable "PYENVDIFF_API_KEY", set to the api key.
 
@@ -131,6 +132,7 @@ Credits
 
 This package was started with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 
+.. _`free personal API Key`: http://eepurl.com/cvQqLX
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 
