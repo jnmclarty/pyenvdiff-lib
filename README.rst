@@ -97,8 +97,16 @@ Which should output... something like the below, (once for each environment you 
     Using API KEY: ...
     Successful POST, use SHA XXXX for reference or comparison.
 
-Then, hit http://pyenvdiff.com/compare.html?left=XXXX&right=YYYY where XXXX and YYYY are the two relevant SHAs.
+Then, use that SHA to fill in the link below:
+::
 
+    https://pyenvdiff.com/view.html?sha=XXX
+
+After you've collected another SHA from another environment...use the link format below, 
+where XXXX and YYYY are two relevant SHAs.
+::
+
+    https://pyenvdiff.com/compare.html?left=XXXX&right=YYYY
 
 Sooo much room for activities!
 ------------------------------
@@ -112,11 +120,18 @@ Sooo much room for activities!
 Installation
 ------------
 
-``
-pip install pyenvdiff 
-``
+There are no manditory, nor automatically installing, dependencies.
+::
+
+    pip install pyenvdiff 
 
 OR just copy & paste pyenvdiff anywhere on PYTHONPATH
+
+There is one optional dependency.  The core functionality doesn't use it.  It's only needed for more advanced HTML-based comparison.
+::
+
+    pip install ghdiff
+
 
 Under the hood
 --------------
