@@ -9,13 +9,10 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    # TODO: put package requirements here
-]
+requirements = [] # Intentionally left empty, despite ghdiff needed for some certain features.
 
-test_requirements = [
-    # TODO: put package test requirements here
-]
+# see requirements_*.txt for lists of relevant test/doc/maintenance dependencies.
+test_requirements = [] #TODO, read in all lists of requirements files.
 
 setup(
     name='pyenvdiff',
@@ -24,7 +21,8 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Jeffrey McLarty",
     author_email='jeffrey.mclarty@gmail.com',
-    url='https://github.com/jnmclarty/pyenvdiff',
+    url='https://github.com/jnmclarty/pyenvdiff-lib',
+    download_url = 'https://github.com/jnmclarty/pyenvdiff-lib/tarball/0.1.0',
     packages=[
         'pyenvdiff',
     ],
@@ -36,17 +34,17 @@ setup(
     zip_safe=False,
     keywords='pyenvdiff',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Operating System :: OS Independent'
     ],
     test_suite='tests',
     tests_require=test_requirements

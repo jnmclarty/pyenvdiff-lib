@@ -78,11 +78,13 @@ From any two python interpreters, you can run:
 
     python -m pyenvdiff.post --email your.email@someserver.com
 
-    or...
+or...
+::
 
     python -m pyenvdiff.post --domain your.website.com
 
-    ...for more optional meta data fields:
+...for more optional meta data fields:
+::
 
     python -m pyenvdiff.post -h
 
