@@ -16,7 +16,7 @@ import os
 
 import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
-from pyenvdiff.info import Environment, EnvironmentDiff
+from pyenvdiff.environment import Environment, EnvironmentDiff
 from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url, get_api_key
 from pyenvdiff.post import DEFAULT_SERVER, LOCAL_SERVER, DEFAULT_API_KEY
 from pyenvdiff.compat import supported_info_types
