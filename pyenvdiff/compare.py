@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from import_macros import import_sys, import_os
-from info import Environment, EnvironmentDiff
+from .import_macros import import_sys, import_os
+from .environment import Environment, EnvironmentDiff
 
 if __name__ == '__main__':
     sys = import_sys()

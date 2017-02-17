@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .version import __version__
-from .info import Environment
+from .environment import Environment
 from .import_macros import import_os, import_json, import_urllib_x
 
 os = import_os()
@@ -74,7 +74,7 @@ def send(environment,
                          'version': version,
                          'tags': tags,
                          'date': date}
-    
+
     data['environment'] = environment.info()
 
     data = json.dumps(data)
