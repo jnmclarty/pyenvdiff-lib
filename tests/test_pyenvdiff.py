@@ -185,8 +185,8 @@ class TestEnvironments(object):
         msg = "Reinstantiated Environments should match!"
         assert EnvironmentDiff(env1, env3).as_bool(), msg
     def test_non_matching_environment_serialization(self):
-        env_a = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "a.yaml"))
-        env_b = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "b.yaml"))
+        env_a = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "a.json"))
+        env_b = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "b.json"))
         ed = EnvironmentDiff(env_a, env_b)
         out = ed.for_json()
         assert type(str(ed)) is str
