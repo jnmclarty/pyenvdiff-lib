@@ -101,7 +101,7 @@ class Environment():
                 out.append(str(info_set[key]))
         return "\n".join(out)
 
-    def _to_yaml_fs(self, outfilestream):
+    def _to_json_fs(self, outfilestream):
         json = import_json()
 
         env_file_data = {
@@ -112,7 +112,7 @@ class Environment():
         outfilestream.write(data)
 
     @staticmethod
-    def _from_yaml_fs(outfilestream):
+    def _from_json_fs(outfilestream):
         json = import_json()
         data = json.load(outfilestream)
         return Environment.from_dict(data['info'])
@@ -127,11 +127,11 @@ class Environment():
 
         return Environment(collected_info)
 
-    def to_yaml(self, fname):
+    def to_file(self, fname):
         with open(fname, 'w') as outfile:
-            self._to_yaml_fs(outfile)
+            self._to_json_fs(outfile)
 
     @staticmethod
-    def from_yaml(fname):
+    def from_file(fname):
         with open(fname, 'r') as infile:
-            return Environment._from_yaml_fs(infile)
+            return Environment._from_json_fs(infile)

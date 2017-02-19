@@ -28,20 +28,20 @@ From the command line, to get information on the current environment:
 Serialize the information to a file...
 ::
 
-    python -m pyenvdiff.info my_environment.yaml
+    python -m pyenvdiff.info my_environment.json
 
 
 Switch to another environment (you'll need pyenvdiff installed in both)
 :: 
 
-    python -m pyenvdiff.compare my_environment.yaml
+    python -m pyenvdiff.compare my_environment.json
 
 
 Or compare two from any environment
 ::
 
-    python -m pyenvdiff.compare my_environment.yaml my_other_environment.yaml
-    
+    python -m pyenvdiff.compare my_environment.json my_other_environment.json
+
 
 Programmatic Usage
 ------------------
@@ -50,10 +50,10 @@ Programmatic Usage
     >>> from pyenvdiff import Environment
     
     >>> e = Environment()
-    >>> e.to_yaml('my_env.yaml')
-    
-    >>> o = Environment.from_yaml('other_env.yaml')
-    
+    >>> e.to_file('my_env.json')
+
+    >>> o = Environment.from_file('other_env.json')
+
     >>> e == o
     True
     
