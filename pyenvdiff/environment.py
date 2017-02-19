@@ -4,7 +4,7 @@
 # any given class, to maximize compatibility.
 from .collectors import collector_classes, collector_class_lookup, CollectorDiff
 from .version import __version__
-from .import_macros import import_sys, import_yaml
+from .import_macros import import_json
 
 DEBUG = False
 
@@ -102,16 +102,20 @@ class Environment():
         return "\n".join(out)
 
     def _to_yaml_fs(self, outfilestream):
-        yaml = import_yaml()
-        outfilestream.write(
-            "# PyEnvDiff Environment File v%s\n" % str(__version__))
-        yaml.dump(self.info(), outfilestream)
+        json = import_json()
+
+        env_file_data = {
+            '__pyenvdiff__file_version__' : str(__version__),
+            'info' : self.info()
+        }
+        data = json.dumps(env_file_data, sort_keys=True, separators=(',', ':'), indent=2)
+        outfilestream.write(data)
 
     @staticmethod
     def _from_yaml_fs(outfilestream):
-        yaml = import_yaml()
-        env_collected_info = yaml.load(outfilestream)
-        return Environment.from_dict(env_collected_info)
+        json = import_json()
+        data = json.load(outfilestream)
+        return Environment.from_dict(data['info'])
 
     @staticmethod
     def from_dict(an_env_dict):
