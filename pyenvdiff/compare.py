@@ -15,7 +15,7 @@ if __name__ == '__main__':
         print(cur_env)
 
         if os.path.exists(fname):
-            oth_env = Environment.from_yaml(fname)
+            oth_env = Environment.from_file(fname)
         else:
             print("\nFile not found:" + fname)
             sys.exit()
@@ -29,8 +29,8 @@ if __name__ == '__main__':
                 print("\nFile not found:" + fname)
                 sys.exit()
 
-        left_env = Environment.from_yaml(left_env)
-        right_env = Environment.from_yaml(right_env)
+        left_env = Environment.from_file(left_env)
+        right_env = Environment.from_file(right_env)
 
         ed = EnvironmentDiff(left_env, right_env)
         print(ed)

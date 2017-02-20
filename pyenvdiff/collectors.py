@@ -83,8 +83,9 @@ class Collector(object):
     def _type_equality_check(self, oth):
         if not isinstance(oth, type(self)):
             return False
-        if not isinstance(oth.info, type(self.info)):
-            return False
+        # TODO: We can gain some performance wins with this hook
+        # if not isinstance(oth.info, type(self.info)):
+        #     return False
         return True
 
     def _basic_content_check(self, oth):

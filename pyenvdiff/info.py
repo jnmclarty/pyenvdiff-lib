@@ -14,5 +14,5 @@ if __name__ == '__main__':
     args = sys.argv
     if len(args) > 1:
         fname = args[1]
-        env.to_yaml(fname)
+        env.to_file(fname)
         print("\nStored yaml version of environment information to " + fname)

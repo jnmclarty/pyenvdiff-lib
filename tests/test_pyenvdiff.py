@@ -175,18 +175,24 @@ class TestEnvironments(object):
         env_1_fs = StringIO()
         env_2_fs = StringIO()
 
-        env1._to_yaml_fs(env_1_fs)
+        env1._to_json_fs(env_1_fs)
         env_1_fs.seek(0)
-        env2 = Environment._from_yaml_fs(env_1_fs)
-        env2._to_yaml_fs(env_2_fs)
+        env2 = Environment._from_json_fs(env_1_fs)
+        env2._to_json_fs(env_2_fs)
         env_2_fs.seek(0)
-        env3 = Environment._from_yaml_fs(env_2_fs)
+        env3 = Environment._from_json_fs(env_2_fs)
 
         msg = "Reinstantiated Environments should match!"
-        assert EnvironmentDiff(env1, env3).as_bool(), msg
+
+        ed = EnvironmentDiff(env1, env3)
+
+        print(ed)
+
+        result = ed.as_bool()
+        assert result, msg
     def test_non_matching_environment_serialization(self):
-        env_a = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "a.yaml"))
-        env_b = Environment.from_yaml(__file__.replace("test_pyenvdiff.py", "b.yaml"))
+        env_a = Environment.from_file(__file__.replace("test_pyenvdiff.py", "a.json"))
+        env_b = Environment.from_file(__file__.replace("test_pyenvdiff.py", "b.json"))
         ed = EnvironmentDiff(env_a, env_b)
         out = ed.for_json()
         assert type(str(ed)) is str

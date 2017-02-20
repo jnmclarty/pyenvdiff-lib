@@ -4,7 +4,7 @@
 # any given class, to maximize compatibility.
 from .collectors import collector_classes, collector_class_lookup, CollectorDiff
 from .version import __version__
-from .import_macros import import_sys, import_yaml
+from .import_macros import import_json
 
 DEBUG = False
 
@@ -101,17 +101,21 @@ class Environment():
                 out.append(str(info_set[key]))
         return "\n".join(out)
 
-    def _to_yaml_fs(self, outfilestream):
-        yaml = import_yaml()
-        outfilestream.write(
-            "# PyEnvDiff Environment File v%s\n" % str(__version__))
-        yaml.dump(self.info(), outfilestream)
+    def _to_json_fs(self, outfilestream):
+        json = import_json()
+
+        env_file_data = {
+            '__pyenvdiff__file_version__' : str(__version__),
+            'info' : self.info()
+        }
+        data = json.dumps(env_file_data, sort_keys=True, separators=(',', ':'), indent=2)
+        outfilestream.write(data)
 
     @staticmethod
-    def _from_yaml_fs(outfilestream):
-        yaml = import_yaml()
-        env_collected_info = yaml.load(outfilestream)
-        return Environment.from_dict(env_collected_info)
+    def _from_json_fs(outfilestream):
+        json = import_json()
+        data = json.load(outfilestream)
+        return Environment.from_dict(data['info'])
 
     @staticmethod
     def from_dict(an_env_dict):
@@ -123,11 +127,11 @@ class Environment():
 
         return Environment(collected_info)
 
-    def to_yaml(self, fname):
+    def to_file(self, fname):
         with open(fname, 'w') as outfile:
-            self._to_yaml_fs(outfile)
+            self._to_json_fs(outfile)
 
     @staticmethod
-    def from_yaml(fname):
+    def from_file(fname):
         with open(fname, 'r') as infile:
-            return Environment._from_yaml_fs(infile)
+            return Environment._from_json_fs(infile)
