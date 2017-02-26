@@ -2,7 +2,8 @@
 
 # We shouldn't have any import errors here, they should be inside
 # any given class, to maximize compatibility.
-from .collectors import collector_classes, collector_class_lookup, CollectorDiff
+from .collectors import collector_classes, collector_class_lookup, \
+    CollectorDiff, Collector
 from .version import __version__
 from .import_macros import import_json
 
@@ -135,3 +136,10 @@ class Environment():
     def from_file(fname):
         with open(fname, 'r') as infile:
             return Environment._from_json_fs(infile)
+
+    def __add__(self, other):
+        if isinstance(other, Environment):
+            raise NotImplementedError("Can't add two environments together")
+        elif issubclass(type(other), Collector):
+            self.collectors[other.__class__.__name__] = other
+            return self
