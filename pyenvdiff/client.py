@@ -1,5 +1,4 @@
 from .version import __version__
-from .environment import Environment
 from .import_macros import import_os, import_json, import_urllib_x
 
 os = import_os()
@@ -17,8 +16,21 @@ class Client(object):
 
     def __init__(self, server=None, api_key=None):
 
-        server = server or os.environ.get('PYENVDIFF_SERVER', self.DEFAULT_SERVER) or self.LOCAL_SERVER
+        server = server or os.environ.get('PYENVDIFF_SERVER', self.DEFAULT_SERVER)
+
+        if server is not None:
+            if server.upper() == 'DEFAULT':
+                server = self.DEFAULT_SERVER
+
+        if server is not None:
+            if server.upper() == 'LOCAL':
+                server = self.LOCAL_SERVER
+
         api_key = api_key or os.environ.get('PYENVDIFF_API_KEY', self.DEFAULT_API_KEY) or FREE_API_KEY
+
+        if api_key is not None:
+            if api_key.upper() == 'DEFAULT':
+                api_key = self.DEFAULT_API_KEY
 
         if server is None:
             raise Exception("Must specify a server.  Found None.")

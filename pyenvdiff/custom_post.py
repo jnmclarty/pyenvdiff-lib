@@ -18,7 +18,7 @@ class MyCollector(Collector):
 def main():
     args = backwards_compatible_parser()
 
-    client = Client(server='...', api_key=None)
+    client = Client(server='https://osa.pyenvdiff.com', api_key=None)
     env = Environment() + MyCollector()
     resp = client.send(env, **args)
     print(resp)
