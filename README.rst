@@ -32,7 +32,7 @@ Serialize the information to a file...
 
 
 Switch to another environment (you'll need pyenvdiff installed in both)
-:: 
+::
 
     python -m pyenvdiff.compare my_environment.json
 
@@ -46,9 +46,9 @@ Or compare two from any environment
 Programmatic Usage
 ------------------
 .. code-block:: python
-   
+
     >>> from pyenvdiff import Environment
-    
+
     >>> e = Environment()
     >>> e.to_file('my_env.json')
 
@@ -56,10 +56,10 @@ Programmatic Usage
 
     >>> e == o
     True
-    
+
     >>> print(e)
     ... # prints a dump of the environment details
-    
+
     >>> from pyenvdiff import EnvironmentDiff
     >>> ed = EnvironmentDiff(e, o)
     >>> print(ed)
@@ -68,7 +68,7 @@ Programmatic Usage
 Web Usage
 ---------
 
-An alpha-level web-based comparison tool is available to browse and compare.  PyEnvDiff ships with a default API Key, which is severly throttled.  Some jerk is likely to abuse it, but until then, try it out.  
+An alpha-level web-based comparison tool is available to browse and compare.  PyEnvDiff ships with a default API Key, which is severly throttled.  Some jerk is likely to abuse it, but until then, try it out.
 
 Get a `free personal API Key`_.
 
@@ -77,17 +77,17 @@ Install your own API key by setting a global environment variable "PYENVDIFF_API
 From any two python interpreters, you can run:
 ::
 
-    python -m pyenvdiff.post --email your.email@someserver.com
+    python -m pyenvdiff.public_post --email your.email@someserver.com
 
 or...
 ::
 
-    python -m pyenvdiff.post --domain your.website.com
+    python -m pyenvdiff.public_post --domain your.website.com
 
 ...for more optional meta data fields:
 ::
 
-    python -m pyenvdiff.post -h
+    python -m pyenvdiff.public_post -h
 
 
 Which should output... something like the below, (once for each environment you run it).
@@ -102,7 +102,7 @@ Then, use that SHA to fill in the link below:
 
     https://pyenvdiff.com/view.html?sha=XXX
 
-After you've collected another SHA from another environment...use the link format below, 
+After you've collected another SHA from another environment...use the link format below,
 where XXXX and YYYY are two relevant SHAs.
 ::
 
@@ -123,7 +123,7 @@ Installation
 There are no manditory, nor automatically installing, dependencies.
 ::
 
-    pip install pyenvdiff 
+    pip install pyenvdiff
 
 OR just copy & paste pyenvdiff anywhere on PYTHONPATH
 

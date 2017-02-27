@@ -17,10 +17,10 @@ import os
 import pyenvdiff
 from pyenvdiff.collectors import Collector, collector_classes
 from pyenvdiff.environment import Environment, EnvironmentDiff
-from pyenvdiff.post import get_available_parser_name_and_class, send, get_server_url, get_api_key
-from pyenvdiff.post import DEFAULT_SERVER, LOCAL_SERVER, DEFAULT_API_KEY
+from pyenvdiff.arg_parsing import get_available_parser_name_and_class
+from pyenvdiff.client import Client
 from pyenvdiff.compat import supported_info_types
-
+from pyenvdiff.public_post import PublicClient
 
 mock_supported_info_instances = []
 
@@ -242,8 +242,8 @@ class TestPost(object):
             assert name == 'getopt'
 
 
-    @mock.patch('pyenvdiff.post.Request')
-    @mock.patch('pyenvdiff.post.urlopen')
+    @mock.patch('pyenvdiff.client.Request')
+    @mock.patch('pyenvdiff.client.urlopen')
     def test_send_basic(self, urlopen, Request):
 
         class FakeFileStream(object):
@@ -259,35 +259,39 @@ class TestPost(object):
         Request.return_value = True
         urlopen.return_value = FakeFileStream()
 
-        msg = send(self.env)
+        client = Client(server='LOCAL')
+        msg = client.send(self.env)
         assert "Good to Go!" in msg
 
 
     def test_get_api_key_unset(self):
+        client = Client(server='LOCAL')
         with mock.patch.dict(os.environ, {}):
-            assert get_api_key() == DEFAULT_API_KEY
+            assert client.api_key == Client.DEFAULT_API_KEY
 
 
     @pt.mark.parametrize("pyenvapikey_envvar,expected_apikey", [
-        ('DEFAULT', DEFAULT_API_KEY),
+        ('DEFAULT', Client.DEFAULT_API_KEY),
         ('123', '123')
     ])
     def test_get_api_key(self, pyenvapikey_envvar, expected_apikey):
         with mock.patch.dict(os.environ, {'PYENVDIFF_API_KEY': pyenvapikey_envvar}):
-            assert get_api_key() == expected_apikey
+            client = Client(server='LOCAL')
+            assert client.api_key == expected_apikey
 
 
     def test_get_server_url_unset(self):
         with mock.patch.dict(os.environ, {}):
-            assert get_server_url() == 'https://osa.pyenvdiff.com'
+            with pt.raises(Exception) as exec_info:
+                Client()
+            assert "Must specify a server.  Found None." in str(exec_info.value)
 
 
     @pt.mark.parametrize("pyenvserver_envvar,expected_server", [
-        ('DEFAULT', DEFAULT_SERVER),
-        ('LOCAL', LOCAL_SERVER),
-        ('http://someserver.com', 'http://someserver.com')
-    ])
+        ('DEFAULT', 'https://osa.pyenvdiff.com'),
+        ('LOCAL', Client.LOCAL_SERVER),
+        ('someserver', 'someserver')])
     def test_get_server_url(self, pyenvserver_envvar, expected_server):
-
         with mock.patch.dict(os.environ, {'PYENVDIFF_SERVER': pyenvserver_envvar}):
-            assert get_server_url() == expected_server
+            client = PublicClient()
+            assert client.server == expected_server

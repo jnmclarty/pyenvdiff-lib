@@ -5,6 +5,9 @@ from .arg_parsing import backwards_compatible_parser
 from .client import Client
 from .environment import Environment
 
+class PublicClient(Client):
+    DEFAULT_SERVER = 'https://osa.pyenvdiff.com'
+
 def main():
     args = backwards_compatible_parser()
 
