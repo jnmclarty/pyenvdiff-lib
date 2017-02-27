@@ -542,6 +542,11 @@
       "C:\\Anaconda\\envs\\py27\\lib\\site-packages"
     ],
     "SysPlatform":"win32",
+    "SysPrefix":[
+      "C:\\Anaconda",
+      "C:\\Anaconda",
+      "C:\\Anaconda"
+    ],
     "SysVersion":"2.7.12 |Continuum Analytics, Inc.| (default, Jun 29 2016, 11:07:13) [MSC v.1500 64 bit (AMD64)]",
     "SysVersionInfo":{
       "major":2,

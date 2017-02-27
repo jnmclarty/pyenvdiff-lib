@@ -436,6 +436,11 @@
       "C:\\Anaconda\\envs\\py35\\lib\\site-packages"
     ],
     "SysPlatform":"win32",
+    "SysPrefix":[
+      "C:\\Anaconda",
+      "C:\\Anaconda",
+      "C:\\Anaconda"
+    ],
     "SysVersion":"3.5.1 |Continuum Analytics, Inc.| (default, Jun 15 2016, 15:29:36) [MSC v.1900 64 bit (AMD64)]",
     "SysVersionInfo":{
       "major":3,

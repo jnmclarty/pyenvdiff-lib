@@ -2,7 +2,7 @@
 
 # We shouldn't have any import errors here, they should be inside
 # any given class, to maximize compatibility.
-from .collectors import collector_classes, collector_class_lookup, \
+from .collectors import harmless_collector_classes, collector_class_lookup, \
     CollectorDiff, Collector
 from .version import __version__
 from .import_macros import import_json
@@ -76,7 +76,7 @@ class Environment():
         else:
             self.collectors = {}
 
-            for CollectorClass in collector_classes:
+            for CollectorClass in harmless_collector_classes:
                 self.collectors[CollectorClass.__name__] = CollectorClass()
 
     def __getitem__(self, name):

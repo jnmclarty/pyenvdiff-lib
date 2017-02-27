@@ -15,7 +15,8 @@ import sys
 import os
 
 import pyenvdiff
-from pyenvdiff.collectors import Collector, collector_classes
+from pyenvdiff.collectors import Collector, collector_classes, \
+    invasive_collector_classes, harmless_collector_classes
 from pyenvdiff.environment import Environment, EnvironmentDiff
 from pyenvdiff.arg_parsing import get_available_parser_name_and_class
 from pyenvdiff.client import Client
@@ -106,10 +107,7 @@ class TestEnvironment(object):
 
     def test_environment_info(self):
         env_info = self.env.info()
-        info_keys = ['Platform', 'PkgutilModules', 'PipDistributions',
-                     'SysByteOrder', 'SysExecutable', 'SysPath', 'SysPlatform', 'SysVersion',
-                     'SysVersionInfo', 'SysFloatInfo', 'SysApiVersion',
-                     'OSUname', 'TimeZone']
+        info_keys = [c.__name__ for c in harmless_collector_classes]
         assert set(env_info.keys()).issubset(info_keys)
 
     def test_environment_str(self):
@@ -118,7 +116,7 @@ class TestEnvironment(object):
 
     def test_environment_keys(self):
         env_keys = list(self.env.collectors.keys())
-        col_cls_names = [getattr(c, '__name__') for c in collector_classes]
+        col_cls_names = [c.__name__ for c in harmless_collector_classes]
         assert set(col_cls_names).issubset(env_keys)
         assert len(col_cls_names) == len(env_keys)
 
@@ -141,6 +139,11 @@ class TestEnvironments(object):
     def test_identical_environments_convert_to_strings_for_every_collector(self):
         env1 = Environment()
         env2 = Environment()
+
+        for Collector in invasive_collector_classes:
+            env1 = env1 + Collector()
+            env2 = env2 + Collector()
+
         ed = EnvironmentDiff(env1, env2)
         assert str(ed).count("MATCHING") == len(collector_classes), "Every collector should match, even erroneous one"
 
@@ -148,6 +151,10 @@ class TestEnvironments(object):
     def test_non_matching_collectors(self, CollectorClass):
         env1 = Environment()
         env2 = Environment()
+
+        if CollectorClass in invasive_collector_classes:
+            env1 += CollectorClass()
+            env2 += CollectorClass()
 
         actual_collector_type = type(env1.collectors[CollectorClass.__name__].info)
 
@@ -196,7 +203,7 @@ class TestEnvironments(object):
         ed = EnvironmentDiff(env_a, env_b)
         out = ed.for_json()
         assert type(str(ed)) is str
-        assert len(out.keys()) == len(collector_classes)
+        assert len(out.keys()) == len(harmless_collector_classes)
         assert set(out['SysPath'].keys()).issuperset(set(['comparison', 'left', 'matching', 'right']))
         assert not out['SysPath']['matching'], "Based on the two files, these shouldn't match"
         assert out['SysPlatform']['matching'], "Based on the two files, these should match"

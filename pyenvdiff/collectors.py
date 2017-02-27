@@ -48,6 +48,11 @@ class CollectorDiff(object):
 
 class Collector(object):
 
+    # Invasive Collectors are ones that could contain personal information
+    # The base Environment object does not use invasive Collectors
+    # A user-defined subclass of Environment could.
+    invasive = False
+
     def __init__(self, info=None):
         try:
             self.info = info or self.__class__.from_env()
@@ -196,9 +201,7 @@ class SysPath(Collector):
     def __str__(self):
         return "\n".join(self.info)
 
-    @property
-    def english(self):
-        return "sys.path Contents"
+    english = "sys.path Contents"
 
     def for_web(self):
         out = "<br>".join(self.info)
@@ -231,6 +234,21 @@ class SysExecutable(Collector):
     def english(self):
         return "sys.executable Information"
 
+class SysPrefix(Collector):
+
+    @staticmethod
+    def from_env():
+        import sys
+        return [sys.prefix, sys.exec_prefix, sys.base_exec_prefix]
+
+    def __str__(self):
+        return "\n".join(self.info)
+
+    english = "sys.prefix, exec_prefix, base_exec_prefix"
+
+    def for_web(self):
+        out = "<br>".join(self.info)
+        return out
 
 class SysByteOrder(Collector):
 
@@ -325,11 +343,63 @@ class TimeZone(Collector):
     def english(self):
         return "Time Zone Information"
 
+class OSEnviron(Collector):
+
+    invasive = True
+
+    @staticmethod
+    def from_env():
+        import os
+        environ = dict(os.environ)
+        keys = list(environ.keys())
+        keys.sort()
+        out = [(k, environ[k]) for k in keys]
+        return out
+
+    def __str__(self):
+        return "\n".join([key + ":" + value for key, value in self.info])
+
+    english = "os.environ Contents"
+
+    def for_web(self):
+        out = "<br>".join(self.info)
+        return out
+
+class UserName(Collector):
+
+    invasive = True
+
+    @staticmethod
+    def from_env():
+        # Note this only works on linux-based systems
+        import pwd, os
+        return pwd.getpwuid(os.getuid())[0]
+
+    english = "User Name"
+
+class HomeDirectory(Collector):
+
+    invasive = True
+
+    @staticmethod
+    def from_env():
+        import os
+        return os.path.expanduser('~')
+
+    english = "Home directory (~)"
+
+
 
 collector_classes = [Platform, PkgutilModules, PipDistributions,
                      SysByteOrder, SysExecutable, SysPath, SysPlatform, SysVersion,
                      SysVersionInfo, SysFloatInfo, SysApiVersion,
-                     OSUname, TimeZone]
+                     OSUname, TimeZone, SysPrefix,
+
+                     OSEnviron, UserName, HomeDirectory]
+
+invasive_collector_classes = [c for c in collector_classes if c.invasive]
+harmless_collector_classes = [c for c in collector_classes if not c.invasive]
+
 
 collector_class_lookup = {}
 for CollectorClass in collector_classes:
