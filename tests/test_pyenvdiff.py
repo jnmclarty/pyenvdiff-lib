@@ -76,14 +76,13 @@ else:
 
 class TestCollectors(object):
     def test_all_collectors_are_captured(self):
-        num = 0
+        discovered = []
         for obj_name in dir(pyenvdiff.collectors):
             obj = getattr(pyenvdiff.collectors, obj_name)
             if inspect.isclass(obj):
-                if issubclass(obj, Collector):
-                    num += 1
-        num = num - 1 # Since the check above will catch the base class, Collector
-        assert(len(collector_classes) == num), "All Collectors should be included in the collector_class list"
+                if issubclass(obj, Collector) and obj is not Collector:
+                    discovered.append(obj)
+        assert(set(collector_classes) == set(discovered)), "All Collectors should be included in the collector_class list"
     @pt.mark.parametrize("CollectorClass", collector_classes)
     def test_equality_check(self, CollectorClass):
         assert(CollectorClass() == CollectorClass()), "Collector should be able to be compared for equality"
