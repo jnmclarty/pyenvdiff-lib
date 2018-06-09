@@ -177,8 +177,33 @@ class PipDistributions(Collector):
         return sorted(info, key=lambda x: x['project_name'])
 
     def __str__(self):
-        out = [" ".join([str(i[a]) for a in self.attrs]) for i in self.info]
-        return "\n".join(out)
+        try:
+            out = []
+            for i in self.info:
+                out.append("{key: <16} v{parsed_version: <10} -> {location}".format(**i))
+
+                if i['key'] == i['project_name']:
+                    sub_proj_name = ""
+                else:
+                    sub_proj_name = " `*.-> {: <16}".format(i['project_name'])
+                
+                if i['parsed_version'] == i['version']:
+                    sub_version = ""
+                else:
+                    sub_version = " \_,-> {: <10}".format(i['version'])
+                
+                sub = "  " + sub_proj_name + sub_version
+
+                if str(i['platform']) != 'None':
+                    sub = sub + "{: <10}".format(i['platform'])
+
+                if i['py_version'] is not None:
+                    sub = sub + "py v{: <10}".format(i['py_version'])
+
+                out.append(sub)
+            return "\n".join(out)
+        except:
+            return str(self.info)
 
     @property
     def english(self):
