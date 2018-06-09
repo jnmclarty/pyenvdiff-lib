@@ -16,13 +16,13 @@ test_requirements = [] #TODO, read in all lists of requirements files.
 
 setup(
     name='pyenvdiff',
-    version='0.1.0',
+    version='0.2.0',
     description="Python environment comparison tool.",
     long_description=readme + '\n\n' + history,
     author="Jeffrey McLarty",
     author_email='jeffrey.mclarty@gmail.com',
     url='https://github.com/jnmclarty/pyenvdiff-lib',
-    download_url = 'https://github.com/jnmclarty/pyenvdiff-lib/tarball/0.1.0',
+    download_url = 'https://github.com/jnmclarty/pyenvdiff-lib/tarball/0.2.0',
     packages=[
         'pyenvdiff',
     ],
