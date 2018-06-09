@@ -143,13 +143,31 @@ class PkgutilModules(Collector):
 
 
 class PipDistributions(Collector):
-    attrs = ['key', 'parsed_version', 'version',
-             'project_name', 'platform', 'py_version', 'location']
+    attrs = ['key', 'parsed_version', 'project_name', 'version', 
+             'platform', 'py_version', 'location']
 
     @staticmethod
     def from_env():
+        
         import pip
-        ins_dis = pip.get_installed_distributions()
+
+        # pip ~9
+        try:
+            from pip import get_installed_distributions
+        except:
+            pass
+
+        # pip ~ 10
+        try: 
+            from pip._internal.utils.misc import get_installed_distributions
+        except:
+            pass
+
+        try:
+            ins_dis = get_installed_distributions()
+        except:
+            raise Exception("Couldn't get pip's get_installed_distributions")
+
         info = []
         for dis in ins_dis:
             relevant = {}
