@@ -15,4 +15,4 @@ if __name__ == '__main__':
     if len(args) > 1:
         fname = args[1]
         env.to_file(fname)
-        print("\nStored yaml version of environment information to " + fname)
+        print("\nStored environment information to " + fname)
