@@ -6,9 +6,16 @@ def _compatible_pad(a_string="", a_char=">", width=80):
     l = len(a_string)
     return a_string + (a_char * (width - l))
 
-
 _cp = _compatible_pad
 
+
+def make_error_safe(func):
+    def wrapper(self, *args):
+        if self.error:
+            return self.info
+        else:
+            return func(self, *args)
+    return wrapper
 
 class CollectorDiff(object):
 
@@ -56,11 +63,13 @@ class Collector(object):
     def __init__(self, info=None):
         try:
             self.info = info or self.__class__.from_env()
+            self.error = False
         except:
             sys = import_sys()
             e_info = sys.exc_info()[1]
             msg = "Error attempting to collect (%s): %s"
             self.info = msg % (self.__class__.__name__, e_info)
+            self.error = True
 
     def __str__(self):
         return str(self.info)
@@ -116,7 +125,8 @@ class Platform(Collector):
     def from_env():
         import platform as p
         return [p.platform(), p.processor()] + list(p.architecture())
-
+   
+    @make_error_safe
     def __str__(self):
         return " | ".join(self.info)
 
@@ -134,6 +144,7 @@ class PkgutilModules(Collector):
         info.sort()
         return info
 
+    @make_error_safe
     def __str__(self):
         return "\n".join(self.info)
 
@@ -176,6 +187,7 @@ class PipDistributions(Collector):
             info.append(relevant)
         return sorted(info, key=lambda x: x['project_name'])
 
+    @make_error_safe
     def __str__(self):
         try:
             out = []
@@ -241,6 +253,7 @@ class SysPath(Collector):
         import sys
         return [x for x in sys.path]
 
+    @make_error_safe
     def __str__(self):
         return "\n".join(self.info)
 
@@ -258,6 +271,7 @@ class SysFloatInfo(Collector):
         import sys
         return list(map(str, sys.float_info))
 
+    @make_error_safe
     def __str__(self):
         return " ".join(self.info)
 
@@ -277,13 +291,23 @@ class SysExecutable(Collector):
     def english(self):
         return "sys.executable Information"
 
+
+
 class SysPrefix(Collector):
 
     @staticmethod
     def from_env():
         import sys
-        return [sys.prefix, sys.exec_prefix, sys.base_exec_prefix]
-
+        
+        out = []
+        for attr in ['prefix', 'exec_prefix', 'base_exec_prefix']:
+            try:
+                out.append(attr + " : " + getattr(sys, attr))
+            except:
+                pass
+        return out
+    
+    @make_error_safe
     def __str__(self):
         return "\n".join(self.info)
 
@@ -364,6 +388,7 @@ class SysVersionInfo(Collector):
             info[attr] = sys.version_info[i]
         return info
 
+    @make_error_safe
     def __str__(self):
         return ".".join([str(self.info[a]) for a in self.attrs])
 
@@ -379,6 +404,7 @@ class TimeZone(Collector):
         import time
         return [str(time.timezone)] + list(time.tzname)
 
+    @make_error_safe
     def __str__(self):
         return " | ".join(self.info)
 
@@ -399,6 +425,7 @@ class OSEnviron(Collector):
         out = [(k, environ[k]) for k in keys]
         return out
 
+    @make_error_safe
     def __str__(self):
         return "\n".join([key + ":" + value for key, value in self.info])
 
