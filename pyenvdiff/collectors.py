@@ -291,13 +291,23 @@ class SysExecutable(Collector):
     def english(self):
         return "sys.executable Information"
 
+
+
 class SysPrefix(Collector):
 
     @staticmethod
     def from_env():
         import sys
-        return [sys.prefix, sys.exec_prefix, sys.base_exec_prefix]
-
+        
+        out = []
+        for attr in ['prefix', 'exec_prefix', 'base_exec_prefix']:
+            try:
+                out.append(attr + " : " + getattr(sys, attr))
+            except:
+                pass
+        return out
+    
+    @make_error_safe
     def __str__(self):
         return "\n".join(self.info)
 
