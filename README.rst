@@ -20,24 +20,28 @@ Command Usage
 -------------
 
 From the command line, to get information on the current environment:
+
 ::
 
     python -m pyenvdiff.info
 
 
 Serialize the information to a file...
+
 ::
 
     python -m pyenvdiff.info my_environment.json
 
 
 Switch to another environment (you'll need pyenvdiff installed in both)
+
 ::
 
     python -m pyenvdiff.compare my_environment.json
 
 
 Or compare two from any environment
+
 ::
 
     python -m pyenvdiff.compare my_environment.json my_other_environment.json
@@ -75,22 +79,26 @@ Get a `free personal API Key`_.
 Install your own API key by setting a global environment variable "PYENVDIFF_API_KEY", set to the api key.
 
 From any two python interpreters, you can run:
+
 ::
 
     python -m pyenvdiff.public_post --email your.email@someserver.com
 
 or...
+
 ::
 
     python -m pyenvdiff.public_post --domain your.website.com
 
 ...for more optional meta data fields:
+
 ::
 
     python -m pyenvdiff.public_post -h
 
 
 Which should output... something like the below, (once for each environment you run it).
+
 ::
 
     Posting environment information to https://osa.pyenvdiff.com
@@ -98,12 +106,14 @@ Which should output... something like the below, (once for each environment you 
     Successful POST, use SHA XXXX for reference or comparison.
 
 Then, use that SHA to fill in the link below:
+
 ::
 
     https://pyenvdiff.com/view.html?sha=XXX
 
 After you've collected another SHA from another environment...use the link format below,
 where XXXX and YYYY are two relevant SHAs.
+
 ::
 
     https://pyenvdiff.com/compare.html?left=XXXX&right=YYYY
@@ -121,6 +131,7 @@ Installation
 ------------
 
 There are no manditory, nor automatically installing, dependencies.
+
 ::
 
     pip install pyenvdiff
@@ -128,6 +139,7 @@ There are no manditory, nor automatically installing, dependencies.
 OR just copy & paste pyenvdiff anywhere on PYTHONPATH
 
 There is one optional dependency.  The core functionality doesn't use it.  It's only needed for more advanced HTML-based comparison.
+
 ::
 
     pip install ghdiff
@@ -150,4 +162,3 @@ This package was started with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 .. _`free personal API Key`: http://eepurl.com/cvQqLX
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
