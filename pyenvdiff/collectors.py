@@ -191,13 +191,15 @@ class PipDistributions(Collector):
                     sub_version = ""
                 else:
                     sub_version = " \_,-> {: <10}".format(i['version'])
-                
+
                 sub = "  " + sub_proj_name + sub_version
 
                 if str(i['platform']) != 'None':
                     sub = sub + "{: <10}".format(i['platform'])
 
-                if i['py_version'] is not None:
+                # DNE for non-eggs is a str that == "None".
+                # pip grabs this from egg file's directory names.  
+                if str(i['py_version']) != 'None':
                     sub = sub + "py v{: <10}".format(i['py_version'])
 
                 out.append(sub)
