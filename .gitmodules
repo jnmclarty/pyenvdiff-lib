@@ -1,0 +1,3 @@
+[submodule "pyenvdiff/bottle"]
+	path = pyenvdiff/bottle
+	url = git@github.com:bottlepy/bottle.git
