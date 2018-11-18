@@ -2,12 +2,12 @@
 Credits
 =======
 
-Development Lead
-----------------
+Maintainer
+----------
 
 * Jeffrey McLarty <jeffrey.mclarty@gmail.com>
 
 Contributors
 ------------
 
-None yet. Why not be the first?
+* Bruk Habtu <https://github.com/brukhabtu>
