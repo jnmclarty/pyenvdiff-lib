@@ -146,6 +146,6 @@ This package was started with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-.. _`Hub Landing Page`: https://htmlpreview.github.io/?https://github.com/jnmclarty/pyenvdiff-lib/docs/examples/home.html
-.. _`Environment Information Page`: https://htmlpreview.github.io/?https://github.com/jnmclarty/pyenvdiff-lib/docs/examples/environment_info.html
-.. _`Environment Diff Page`: https://htmlpreview.github.io/?https://github.com/jnmclarty/pyenvdiff-lib/docs/examples/environment_diff_view.html
+.. _`Hub Landing Page`: https://htmlpreview.github.io/?https://github.com/jnmclarty/pyenvdiff-lib/master/docs/examples/home.html
+.. _`Environment Information Page`: https://htmlpreview.github.io/?https://github.com/jnmclarty/pyenvdiff-lib/master/docs/examples/environment_info.html
+.. _`Environment Diff Page`: https://htmlpreview.github.io/?https://github.com/jnmclarty/pyenvdiff-lib/master/docs/examples/environment_diff_view.html
