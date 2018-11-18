@@ -14,20 +14,21 @@ requirements = [] # Intentionally left empty, despite ghdiff needed for some cer
 # see requirements_*.txt for lists of relevant test/doc/maintenance dependencies.
 test_requirements = [] #TODO, read in all lists of requirements files.
 
+version = '0.3.0'
+
 setup(
     name='pyenvdiff',
-    version='0.2.0',
+    version=version,
     description="Python environment comparison tool.",
     long_description=readme + '\n\n' + history,
     author="Jeffrey McLarty",
     author_email='jeffrey.mclarty@gmail.com',
     url='https://github.com/jnmclarty/pyenvdiff-lib',
-    download_url = 'https://github.com/jnmclarty/pyenvdiff-lib/tarball/0.2.0',
+    download_url='https://github.com/jnmclarty/pyenvdiff-lib/tarball/' + version,
     packages=[
         'pyenvdiff',
     ],
-    package_dir={'pyenvdiff':
-                 'pyenvdiff'},
+    package_dir={'pyenvdiff': 'pyenvdiff'},
     include_package_data=True,
     install_requires=requirements,
     license="BSD license",
@@ -44,6 +45,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Operating System :: OS Independent'
     ],
     test_suite='tests',
