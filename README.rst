@@ -15,7 +15,7 @@ PyEnvDiff
 
 
 Python environment comparison tool.  Maximized for compatibility between versions 2.6 to 3.8, pypy,
-operating systems, distributions, and forks!  Virtualenv, pyenv, pyvenv, conda, system!
+operating systems, distributions, and forks!  Virtualenv, pyenv, pyvenv, conda and system!
 
 via Command-Line
 ----------------
@@ -50,6 +50,10 @@ Or compare two from any environment
 
 via Hub-Based Compare
 ---------------------
+
+An HTTP-based service comes with pyenvdiff, all without dependencies (thanks to a copy of bottle).  It stores environment
+information in RAM, for as long as it runs.  This service should be considered alpha-stage.
+
 To launch the built-in hub (server):
 
 ::
@@ -60,6 +64,8 @@ To launch the built-in hub (server):
 Then navigate in your browser to the URL it gives you to see the menu of available options.  Before you send information
 about other environments on the same machine, your options will be limited to just viewing the server's environment.
 
+Samples of the `Hub Landing Page`_ and the `Environment Information Page`_ illustrate the features.
+
 From one or more other environments run:
 
 ::
@@ -67,10 +73,11 @@ From one or more other environments run:
    python -m pyenvdiff.post_to_hub
 
 
-It'll give you a URL to view that environment from any machine on the same network.
+A URL will be displayed to view environment information from any machine on the same network.
 
 Navigate back to the base URL, you'll see more options to compare the two environments.
 
+A Sample of the `Environment Diff Page`_ illustrate what the diff can do (if ```ghdiff``` is installed for the hub).
 
 Programmatic Usage
 ------------------
@@ -107,7 +114,7 @@ Sooo much room for activities!
 Installation
 ------------
 
-There are no manditory, nor automatically installing, dependencies.
+There are no mandatory, nor automatically installing, dependencies.  There are optional dependencies which increase.
 
 ::
 
@@ -115,7 +122,7 @@ There are no manditory, nor automatically installing, dependencies.
 
 OR just copy & paste pyenvdiff anywhere on PYTHONPATH
 
-There is one optional dependency.  The core functionality doesn't use it.  It's only needed for more advanced HTML-based comparison.
+There is one optional dependency.  The core functionality doesn't use it.  It's only needed for pretty HTML-based comparisons via the web.
 
 ::
 
@@ -125,7 +132,8 @@ There is one optional dependency.  The core functionality doesn't use it.  It's 
 Under the hood
 --------------
 
-* Zero dependency, pure-python, harmless `pip install pyenvdiff` or copy anywhere on PYTHONPATH.
+* Robust and organized object model collects and serializes environment information.
+* Zero dependency, pure-python, harmless install!  Simply `pip install pyenvdiff` or copy anywhere on PYTHONPATH.
 * As-needed import statements, to maximize compatibility across python flavours.
 * Favours compatible python-code over succinct or newer-style python-code
 * Free software: BSD license
@@ -138,3 +146,6 @@ This package was started with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. _`Hub Landing Page`: https://github.com/jnmclarty/pyenvdiff-lib/docs/examples/home.html
+.. _`Environment Information Page`: https://github.com/jnmclarty/pyenvdiff-lib/docs/examples/environment_info.html
+.. _`Environment Diff Page`: https://github.com/jnmclarty/pyenvdiff-lib/docs/examples/environment_diff_view.html
