@@ -51,7 +51,7 @@ class EnvironmentDiff(object):
         ans = [self.results[k].as_bool() for k in self.keys]
         return all(ans)
 
-    def for_json(self, collectors=None, include_matching=True):
+    def for_app(self, output='for_json', collectors=None, include_matching=True):
         out = {}
 
         if collectors is None:
@@ -61,11 +61,18 @@ class EnvironmentDiff(object):
 
         for col in collectors:
             col_diff = self.results[col]
-            col_diff = col_diff.for_json()
+            col_diff = getattr(col_diff, output)()
             if include_matching or (not col_diff['matching']):
                 out[col] = col_diff
         return out
 
+    def for_json(self, collectors=None, include_matching=True):
+
+        return self.for_app('for_json', collectors, include_matching)
+
+    def for_web(self, collectors=None, include_matching=True):
+
+        return self.for_app('for_web', collectors, include_matching)
 
 class Environment():
 
@@ -87,6 +94,20 @@ class Environment():
         for k, d in self.collectors.items():
             out[k] = d.info
         return out
+
+    def for_app(self, output='for_json'):
+        out = {}
+        for k, d in self.collectors.items():
+            out[k] = {}
+            out[k]['info'] = getattr(d, output)()
+            out[k]['english'] = d.english
+        return out
+
+    def for_web(self):
+        return self.for_app('for_web')
+
+    def for_json(self):
+        return self.for_app('for_json')
 
     def __str__(self):
         out = []
