@@ -25,15 +25,52 @@ if __name__ == '__main__':
 
     env_info_store = ['The first entry in this list is never used, the rest of the elements are a tuple of the form (environment info, timestamp)']
 
+    HOME_TEMPLATE = """<html><h1>""" + title + """</h1>
+                       <p>View Environment Information for the hub at <a href=/environment_info>/environment_info</a>
+                       
+                       % for i, (posted_data, ts) in enumerate(stored_envs):
+                         <p>View Environment Information for <a href=/environment_info/{{i+1}}>Env #{{i+1}}</a> from {{ts}}
+                       % end
+                       
+                       % for a, b, hub in options:
+                         <p>Compare <a href=/environment_diff_view/{{a}}/{{b}}>Env #{{a}} {{hub}} and Env #{{b}}</a>
+                       % end
+                                       
+                       </html>"""
     @route('/')
     def index():
-        return r"<html>" + title + "</html>"
 
 
-    ENV_TEMPLATE = """<html><<title>""" + title + """</title><body>
+        options = []
+        for i in range(len(env_info_store)):
+            for j in range(i, len(env_info_store)):
+                if i != j:
+                    if i == 0:
+                        hub = "(hub)"
+                    else:
+                        hub = ""
+                    options.append((i, j, hub))
+
+        return template(HOME_TEMPLATE, stored_envs=env_info_store[1:], options=options)
+
+
+    ENV_TEMPLATE = """<html><title>""" + title + """</title><body>
                                 <h1>""" + title + """</h1><hr>
+ 
                                 <h1>Environment #{{env_number}} as of {{ts}}</h1>
+ 
+                                 <ul>
                                 % for collector in env.keys():
+                                  <li> <a href=#{{collector}}>{{collector}}</a>
+                                  </li>
+                                % end
+                                </ul>
+
+                                <hr>
+
+ 
+                                % for collector in env.keys():
+                                    <a name={{collector}}></a>
                                     <h1>{{collector}}</h1>
                                     <p><b>{{env[collector]['english']}}</b></p>
                                     <p>{{!env[collector]['info']}}</p>
@@ -91,11 +128,6 @@ if __name__ == '__main__':
 
         env_info = environment.for_web()
 
-        print(type(env_info))
-        print(env_info.keys())
-        from pprint import pprint
-        pprint(env_info)
-
         response.content_type = 'text/html'
 
         return template(ENV_TEMPLATE, env=env_info, env_number=env_info_key, ts=ts)
@@ -147,7 +179,7 @@ if __name__ == '__main__':
                                 <h1>Environment #{{e1}} ({{ts1}}) vs #{{e2}} ({{ts2}})</h1>
                                 
                                 % if e1 == 0 or e2 == 0:
-                                   Note: Environment #0 is the environment the PyEnvDiff server is running from.
+                                   Note: Environment #0 is the environment the PyEnvDiff hub is running from.
                                 % end
                                 
                                 <ul>
@@ -229,8 +261,19 @@ if __name__ == '__main__':
     except:
         PORT = '8080'
 
-    print("Starting up " + title + " on http://" + SERVER + ":" + PORT)
-
-
+    print("Starting up " + title + " running on:")
+    print()
+    print("   http://" + SERVER + ":" + PORT + "/")
+    print()
+    print("You can view environment information at")
+    print()
+    print("   http://" + SERVER + ":" + PORT + "/environment_info")
+    print()
+    print("If you run the following command from other environments:")
+    print(">>>python -m pyenvdiff.post_to_hub http://" + SERVER + ":" + PORT)
+    print("...")
+    print("You will be able to view it, or compare it, at the following URLs:")
+    print("   http://" + SERVER + ":" + PORT + "/environment_info/N where N is the number of environment, shown in the response after posting.")
+    print("   http://" + SERVER + ":" + PORT + "/environment_diff_view/N/M where N & M are two different environment numbers.  Use 0 for the hub's environment.")
 
     run(host=SERVER, port=PORT, quiet=True)

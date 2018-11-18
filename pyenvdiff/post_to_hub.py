@@ -9,9 +9,10 @@ def main():
 
     sys = import_sys()
 
-    if len(sys.argv) >= 1:
-        client = HubClient(server=sys.argv[1])
+    if len(sys.argv) >= 2:
+        client = HubClient(server=sys.argv[-1])
     else:
+        print("Assuming http://localhost:8080, add the base URL as a single argument for a different hub.")
         client = HubClient() # Will default to localhost on 8080
 
 
