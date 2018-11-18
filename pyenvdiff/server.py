@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     DEVELOP_MODE = False
 
-    title = "PyEnvDiff P2P Environment Diff Tool v" + v
+    title = "PyEnvDiff Environment Diff Tool Hub v" + v
     header = "<h1>Welcome to " + title + " for M2M & H2M Environment Information & Difference Server!</h1>For more information see the <a href='http://pyenvdiff.com'>home page</a> or checkout the <a href='http://github.com/jnmclarty/pyenvdiff-lib'>github</a>"
 
     env_info_store = ['The first entry in this list is never used, the rest of the elements are a tuple of the form (environment info, timestamp)']
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     @route('/environment_info', method='GET')
     @route('/environment_info/<env_info_key>', method='GET')
     def environment_info_read(env_info_key=0):
-        """Recieves Environment Info from P2P"""
+        """Recieves Environment Info"""
 
         global env_info_store
 

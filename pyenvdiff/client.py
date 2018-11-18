@@ -137,7 +137,7 @@ class PublicClient(Client):
     LOCAL_SERVER = 'http://localhost:8080'
     DEFAULT_API_KEY = FREE_API_KEY
 
-class P2PClient(Client):
+class HubClient(Client):
 
     DEFAULT_SERVER = r'http://localhost:8080'
     LOCAL_SERVER = r'http://localhost:8080'
