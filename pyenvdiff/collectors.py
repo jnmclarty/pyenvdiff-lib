@@ -42,16 +42,32 @@ class CollectorDiff(object):
 
     def for_json(self):
         out = {"matching": self.matching,
+               "left": self.coll_l.for_json(),
+               "right": self.coll_r.for_json(),
+               "english" : self.coll_l.english,
+               "comparison": None}
+
+        if not self.matching:
+            comparison = self.coll_l.diff(self.coll_r)
+            if comparison['tool'] == 'difflib':
+                comparison['diff'] = str(comparison['diff'])
+            out["comparison"] = comparison
+
+        return out
+
+    def for_web(self):
+        out = {"matching": self.matching,
                "left": self.coll_l.for_web(),
                "right": self.coll_r.for_web(),
                "english" : self.coll_l.english,
                "comparison": None}
 
         if not self.matching:
-            out["comparison"] = self.coll_l.diff(self.coll_r)
+            comparison = self.coll_l.diff(self.coll_r)
+            comparison = comparison['diff']
+            out["comparison"] = comparison
 
         return out
-
 
 class Collector(object):
 
@@ -84,16 +100,39 @@ class Collector(object):
         left = str(self)
         right = str(oth)
 
-        #pyenvdiff is designed to be dependency free, so we put import statements for a few dependencies in nice-to-have features.
-        import ghdiff
+        out = None
 
-        out = ghdiff.diff(left, right)
-        return {"type": "html", "diff": out}
+        #pyenvdiff is designed to be dependency free, so we put import statements for a few dependencies in nice-to-have features.
+        try:
+            import ghdiff
+            out = ghdiff.diff(left, right)
+            tool = 'ghdiff'
+        except:
+            print("ghdiff is an optional dependency, which is missing.")
+
+        if out is None:
+
+            from difflib import HtmlDiff
+            from difflib import unified_diff
+
+            # out = "<br>".join(list(unified_diff(left.split("\n"), right.split("\n"), "", "")))
+
+            out = HtmlDiff().make_table(left.split("\n"), right.split("\n"), "A", "B")
+            tool = 'difflib'
+
+
+        return  {"type": "html", "diff": out, "tool" : tool}
+
+    def _check_for_error(self):
+        if isinstance(self.info, str):
+            self.error = True
 
     @classmethod
     def from_dict(cls, info_dict):
         info = info_dict[cls.__name__]
-        return cls(info)
+        collector = cls(info)
+        collector._check_for_error()
+        return collector
 
     def _type_equality_check(self, oth):
         if not isinstance(oth, type(self)):
@@ -124,13 +163,13 @@ class Platform(Collector):
 
     @staticmethod
     def from_env():
-        
-        # pyenvdiff is designed to be dependency free.  
-        # Each collector will return an error if its required dependency isn't available. 
+
+        # pyenvdiff is designed to be dependency free.
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import platform as p
         return [p.platform(), p.processor()] + list(p.architecture())
-   
+
     @make_error_safe
     def __str__(self):
         return " | ".join(self.info)
@@ -145,8 +184,8 @@ class PkgutilModules(Collector):
     @staticmethod
     def from_env():
 
-        # pyenvdiff is designed to be dependency free.  
-        # Each collector will return an error if its required dependency isn't available. 
+        # pyenvdiff is designed to be dependency free.
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import pkgutil
         info = [m for i, m, p in pkgutil.iter_modules() if p]
@@ -157,20 +196,23 @@ class PkgutilModules(Collector):
     def __str__(self):
         return "\n".join(self.info)
 
+    def for_web(self):
+        return "<br>".join(self.info)
+
     @property
     def english(self):
         return "Pkgutil Modules"
 
 
 class PipDistributions(Collector):
-    attrs = ['key', 'parsed_version', 'project_name', 'version', 
+    attrs = ['key', 'parsed_version', 'project_name', 'version',
              'platform', 'py_version', 'location']
 
     @staticmethod
     def from_env():
 
-        # pyenvdiff is designed to be dependency free.  
-        # Each collector will return an error if its required dependency isn't available. 
+        # pyenvdiff is designed to be dependency free.
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import pip
 
@@ -181,7 +223,7 @@ class PipDistributions(Collector):
             pass
 
         # pip ~ 10
-        try: 
+        try:
             from pip._internal.utils.misc import get_installed_distributions
         except:
             pass
@@ -210,7 +252,7 @@ class PipDistributions(Collector):
                     sub_proj_name = ""
                 else:
                     sub_proj_name = " `*.-> {: <16}".format(i['project_name'])
-                
+
                 if i['parsed_version'] == i['version']:
                     sub_version = ""
                 else:
@@ -222,7 +264,7 @@ class PipDistributions(Collector):
                     sub = sub + "{: <10}".format(i['platform'])
 
                 # DNE for non-eggs is a str that == "None".
-                # pip grabs this from egg file's directory names.  
+                # pip grabs this from egg file's directory names.
                 if str(i['py_version']) != 'None':
                     sub = sub + "py v{: <10}".format(i['py_version'])
 
@@ -235,8 +277,8 @@ class PipDistributions(Collector):
     def english(self):
         return "Pip Installed Distributions"
 
+    @make_error_safe
     def for_web(self):
-
         def make_pretty(row):
 
             tmpl = ["{project_name}"]
@@ -283,7 +325,7 @@ class SysFloatInfo(Collector):
     @staticmethod
     def from_env():
         # pyenvdiff is designed to be dependency free.  Yes, even sys.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
         return list(map(str, sys.float_info))
@@ -303,7 +345,7 @@ class SysExecutable(Collector):
     def from_env():
 
          # pyenvdiff is designed to be dependency free.  Yes, even sys.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
         return sys.executable or "None Found"
@@ -319,10 +361,10 @@ class SysPrefix(Collector):
     @staticmethod
     def from_env():
         # pyenvdiff is designed to be dependency free.  Yes, even sys.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
-        
+
         out = []
         for attr in ['prefix', 'exec_prefix', 'base_exec_prefix']:
             try:
@@ -330,7 +372,7 @@ class SysPrefix(Collector):
             except:
                 pass
         return out
-    
+
     @make_error_safe
     def __str__(self):
         return "\n".join(self.info)
@@ -345,9 +387,9 @@ class SysByteOrder(Collector):
 
     @staticmethod
     def from_env():
-        
+
         # pyenvdiff is designed to be dependency free.  Yes, even sys.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
         return sys.byteorder
@@ -361,9 +403,9 @@ class OSUname(Collector):
 
     @staticmethod
     def from_env():
-        
+
         # pyenvdiff is designed to be dependency free.  Yes, even os, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import os
         return " ".join(os.uname())  # Unix only
@@ -390,7 +432,7 @@ class SysVersion(Collector):
     @staticmethod
     def from_env():
         # pyenvdiff is designed to be dependency free.  Yes, even os, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
         return sys.version
@@ -405,7 +447,7 @@ class SysApiVersion(Collector):
     @staticmethod
     def from_env():
         # pyenvdiff is designed to be dependency free.  Yes, even sys, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
         return sys.api_version
@@ -421,7 +463,7 @@ class SysVersionInfo(Collector):
     @staticmethod
     def from_env():
         # pyenvdiff is designed to be dependency free.  Yes, even sys, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import sys
         info = {}
@@ -443,7 +485,7 @@ class TimeZone(Collector):
     @staticmethod
     def from_env():
         # pyenvdiff is designed to be dependency free.  Yes, even time, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import time
         return [str(time.timezone)] + list(time.tzname)
@@ -462,9 +504,9 @@ class OSEnviron(Collector):
 
     @staticmethod
     def from_env():
-        
+
         # pyenvdiff is designed to be dependency free.  Yes, even os, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import os
         environ = dict(os.environ)
@@ -489,11 +531,11 @@ class UserName(Collector):
 
     @staticmethod
     def from_env():
-        
+
         # pyenvdiff is designed to be dependency free.  Yes, even os, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
-        
+
         # Note this only works on linux-based systems
         import pwd, os
         return pwd.getpwuid(os.getuid())[0]
@@ -506,9 +548,9 @@ class HomeDirectory(Collector):
 
     @staticmethod
     def from_env():
-        
+
         # pyenvdiff is designed to be dependency free.  Yes, even os, because some builds might omit.
-        # Each collector will return an error if its required dependency isn't available. 
+        # Each collector will return an error if its required dependency isn't available.
         # ...but allows other collectors to continue on.
         import os
         return os.path.expanduser('~')

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PyEnvDiff - Environment View</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://pyenvdiff.jeffreymclarty.com/static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="http://pyenvdiff.jeffreymclarty.com/static/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://pyenvdiff.jeffreymclarty.com/static/css/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="static/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="http://pyenvdiff.jeffreymclarty.com/static/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul id="sidebar" class="nav nav-sidebar">
+            <!-- Javascript inserts <li> here. -->
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Environment View</h1>
+          <div class="environment_meta" style="width:50%;">
+              <table class="table">
+                  <thead>
+                     <tr>
+                        <td id="switch_env_table_header"></td>
+                        <th id="right_env_table_header"></th>
+                     </tr>
+                  </thead> 
+                  <tbody id="env_table_body">
+                  </tbody>
+
+              </table>
+          </div>
+          <div class="compare" style="width:75%">
+          Compare against another environment, using it's SHA:
+          <form class="form-inline" action="http://pyenvdiff.com/compare.html">
+  <div class="form-group">
+    <label for="LeftSHA">SHA</label>
+    <input type="text" class="form-control" id="LeftSHA" name="left" placeholder="NA">
+    <input type="hidden" name="right" value="NA" id="RightSHA">
+  </div>
+  <button type="submit" class="btn btn-primary">Compare</button>
+</form>
+          </div>
+          <div class="collectors">
+          </div>
+                    
+          </div>
+      </div>
+    </div>
+    
+
+    <script>
+    // var api_server = 'http://localhost:8080';
+    var api_server = 'https://osa.pyenvdiff.com';
+    
+	function getParam( name )
+	{
+	 name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	 var regexS = "[\\?&]"+name+"=([^&#]*)";
+	 var regex = new RegExp( regexS );
+	 var results = regex.exec( window.location.href );
+	 if( results == null )
+	  return "";
+	else
+	 return results[1];
+	}
+
+    </script>
+    <script>
+
+    var xhrcm = new XMLHttpRequest();
+
+    right_sha = getParam('sha');
+    
+    hidden_field = document.getElementById("RightSHA");
+    hidden_field.value = right_sha;
+
+    sha_input_field = document.getElementById("LeftSHA");
+    sha_input_field.value = right_sha;
+    
+    xhrcm.open('GET', api_server + '/environment_meta/' + right_sha, true);
+    xhrcm.send();
+    
+    xhrcm.addEventListener("readystatechange", processEnvironmentMeta, false);
+
+    function processEnvironmentMeta(e) {
+        if (this.readyState == 4 && this.status == 200){
+            var resp = JSON.parse(this.responseText)
+            xhrcm.onreadystatechange = null; 
+
+            var right = resp['right'];       
+            var right_tbl_header = document.getElementById("right_env_table_header");
+
+            var tbody = document.getElementById("env_table_body"); 
+
+		var tr = document.createElement('tr');
+		var td = document.createElement('td');
+		td.className = "text-right";
+		td.innerHTML = "sha";
+		var tdr = document.createElement('td');
+		tdr.className = "text-left";
+		tdr.innerHTML = right_sha;
+
+		tr.appendChild(td);
+		tr.appendChild(tdr);
+		tbody.appendChild(tr);
+
+
+            
+		/* var tr = document.createElement('tr');
+		var td = document.createElement('td');
+		td.className = "text-right";
+		td.innerHTML = "date";
+		var tdr = document.createElement('td');
+		tdr.className = "text-left";
+		tdr.innerHTML = right['date'];
+
+		tr.appendChild(td);
+		tr.appendChild(tdr);
+		tbody.appendChild(tr); */
+
+        console.log("right: " + right);        
+        for (var key in right) {
+            if (!right.hasOwnProperty(key)) continue;
+
+            var value = right[key];
+            
+            if (!(value === null)) {
+            
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                        td.className = "text-right";
+                        td.innerHTML = key
+                var tdr = document.createElement('td');
+                        tdr.className = "text-left";
+                tdr.innerHTML = value;
+                  
+
+                tr.appendChild(td);
+                tr.appendChild(tdr);
+                tbody.appendChild(tr);
+                }
+            }
+
+        } 
+    }
+
+
+    </script>
+    <script>
+
+
+
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', api_server + '/collector_list/' + right_sha, true);
+    xhr.send();
+    
+    xhr.addEventListener("readystatechange", processRequest, false);
+
+    xhr.onreadystatechange = processEnvironmentAndMeta;
+
+    function processEnvironmentAndMeta(e) {
+        if (this.readyState == 4 && this.status == 200){
+            var collector_list = JSON.parse(this.responseText)
+            xhr.onreadystatechange = null; 
+                                          
+            var collectorsDiv = document.getElementsByClassName("collectors")[0];
+            
+            var sideBar = document.getElementById("sidebar");
+            sideBar.innerHTML = '';
+            
+            for (var i in collector_list) {
+                col = collector_list[i]
+
+                var link = '<li id=' + col + 'Nav></li>';
+                sideBar.innerHTML = sideBar.innerHTML + link;
+                                                   
+                var anchor = document.createElement('a');
+                // anchor.className = "collector-top-anchor" 
+                anchor.name = col+"Anchor";
+                anchor.innerHTML = "&nbsp;";
+                // anchor.style = "position:absolute; top:-100px;"
+
+                var anchorp = document.createElement('div');
+                // anchorp.style = "position:relative;"
+                anchorp.appendChild(anchor)
+                collectorsDiv.appendChild(anchorp);
+
+                // Area for actually putting the equality & header content of the diff.
+                var div = document.createElement('div');
+                div.id = col + "equality"
+                div.className = "col-md-1";
+                collectorsDiv.appendChild(div)
+
+                var div = document.createElement('div');
+                div.id = col + "header"
+                div.className = "col-md-11";
+                collectorsDiv.appendChild(div)
+
+                
+                // Area for actually putting the content of the diff.
+                var div = document.createElement('div');
+                div.id = col
+                div.className = "col-md-12";
+                collectorsDiv.appendChild(div);
+
+                var xhrc = new XMLHttpRequest();
+                xhrc.addEventListener("readystatechange", processRequest, false);
+                xhrc.onreadystatechange = processRequest;
+                xhrc.open('GET', api_server + '/view_one/' + col + '/' + right_sha, true);
+                xhrc.send();
+                    
+            }
+        }
+    }
+    
+    function processRequest(e) {
+        if (this.readyState == 4 && this.status == 200){
+            var resp = JSON.parse(this.responseText)
+            
+            if (resp.hasOwnProperty('collector_name')) {
+            
+                var col = resp['collector_name'];
+            
+                var collectorDivH = document.getElementById(col + "header");
+                collectorDivH.innerHTML = '';
+                
+                var header = document.createElement('h3');
+                header.className = "sub-header"
+                header.innerHTML = resp['collector_english']
+                // anchor.appendChild(header);
+                // collectorsDiv.appendChild(anchor);
+                collectorDivH.appendChild(header)
+
+                var collectorDivE = document.getElementById(col + "equality");
+                collectorDivE.innerHTML = '';
+
+                var collectorDiv = document.getElementById(col);
+                collectorDiv.innerHTML = '';
+                
+                var matchingButton = document.createElement('button');                        
+                matchingButton.setAttribute('type', "button");
+                
+
+                var navlink = document.getElementById(col + "Nav");
+                var navlink_a = document.createElement('a')
+                navlink_a.setAttribute('href', "#" + col + "Anchor")
+                navlink_a.innerHTML = col
+                navlink.innerHTML = '';
+                
+                var matchingButtonLink = document.createElement('a');                        
+                matchingButtonLink.setAttribute('role', "button");
+                matchingButtonLink.setAttribute('href', "#" + col + "Anchor")
+
+                    
+                    matchingButtonLink.innerHTML = col;
+                    matchingButtonLink.className = "btn btn-xs btn-info";
+
+                    var leftWell = document.createElement('div');
+                    leftWell.innerHTML = resp["right"];
+                    leftWell.className = "well";
+                    collectorDiv.appendChild(leftWell);
+
+                
+                // matchingButtonLink.setAttribute('style', "")
+                navlink.appendChild(matchingButtonLink)
+                // navlink.appendChild(navlink_a)
+            }
+        }
+    }
+        
+    </script>
+
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="http://pyenvdiff.jeffreymclarty.com/static/assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="http://pyenvdiff.jeffreymclarty.com/static/dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="http://pyenvdiff.jeffreymclarty.com/static/assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="http://pyenvdiff.jeffreymclarty.com/static/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

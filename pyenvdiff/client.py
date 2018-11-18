@@ -11,8 +11,9 @@ FREE_API_KEY = 'qcjODGX4iw3cEPIQR7Jn77uTKSuQOvwS4Q4z7AwR'
 class Client(object):
 
     DEFAULT_SERVER = None # FEEL FREE TO PATCH THIS CODE HERE WITH A HARDCODED SERVER Eg. 'https://osa.pyenvdiff.com'
-    LOCAL_SERVER = 'http://localhost:8080'
+    LOCAL_SERVER = r'http://localhost:8080'
     DEFAULT_API_KEY = FREE_API_KEY
+    SUBMISSION_ENDPOINT = r'/submit'
 
     def __init__(self, server=None, api_key=None):
 
@@ -81,13 +82,15 @@ class Client(object):
         if api_key == FREE_API_KEY:
             print("Attempting to use the demo API KEY.  It's throttled.  If this fails, consider requesting your own.")
             print("Once you have your own, set an environment variable PYENVDIFF_API_KEY to your API key.")
+        elif api_key == 'NOT_REQUIRED':
+            pass # Backwards compatibility
         else:
             print("Using API KEY: " + api_key[:6] + "...")
 
 
-        req = Request(server + "/submit", data, {'x-api-key': api_key,
-                                                 'Content-Type': 'application/json',
-                                                 'Content-Length': clen})
+        req = Request(server + self.SUBMISSION_ENDPOINT, data, {'x-api-key': api_key,
+                                                                      'Content-Type': 'application/json',
+                                                                      'Content-Length': clen})
 
         try:
             f = urlopen(req)
@@ -96,6 +99,8 @@ class Client(object):
                 print("You are getting throttled.  Try again later.")
                 if api_key == FREE_API_KEY:
                     print("You are using the demo API KEY.  You can try again in a moment, or request your own API KEY.")
+                elif api_key == 'NOT_REQUIRED':
+                    pass # backwards compatibility
                 else:
                     print("Even the personal API KEYs have limits.  What are you doing?  Let the maintainer know, he might boost your API limit.")
                 return ""
@@ -108,6 +113,15 @@ class Client(object):
 
         f.close()
 
+        response_type = response.get('response_type', None)
+
+        if response_type == 'environment_info_write':
+            return '''Environment #{environment_number} posted at {timestamp} can be viewed @\n{read_url}\n...or diffed with the server's environment @\n{diff_url}\n...or replace the 0 in the URL with any other Environment #.'''.format(**response)
+
+        if response_type == 'environment_diff':
+            print(response)
+
+
         if response.get('result', None) == 'OK':
             sha = response['sha']
 
@@ -115,11 +129,34 @@ class Client(object):
             if 'pyenvdiff.com' in server:
                 print("Eg. http://pyenvdiff.com/view.html?sha=%s" % sha)
 
-        return response.get("message", "No message provided. Something strange happened on the server.  This shouldn't happen. Please file a github issue. " + str(response))
+        return response.get("message", "No response message provided. Something strange happened on the server.  This shouldn't happen. Please file a github issue. " + str(response))
 
-class PublicClient(object):
+class PublicClient(Client):
 
     DEFAULT_SERVER = 'https://osa.pyenvdiff.com'
     LOCAL_SERVER = 'http://localhost:8080'
     DEFAULT_API_KEY = FREE_API_KEY
 
+class HubClient(Client):
+
+    DEFAULT_SERVER = r'http://localhost:8080'
+    LOCAL_SERVER = r'http://localhost:8080'
+    SUBMISSION_ENDPOINT = r'/environment_info'
+
+    def __init__(self, server=None):
+
+        server = server or os.environ.get('PYENVDIFF_SERVER', self.DEFAULT_SERVER)
+
+        if server is not None:
+            if server.upper() == 'DEFAULT':
+                server = self.DEFAULT_SERVER
+
+        if server is not None:
+            if server.upper() == 'LOCAL':
+                server = self.LOCAL_SERVER
+
+        if server is None:
+            raise Exception("Must specify a server.  Found None.")
+
+        self.server = server
+        self.api_key = 'NOT_REQUIRED'
