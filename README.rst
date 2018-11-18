@@ -14,11 +14,11 @@ PyEnvDiff
     :alt: Documentation Status
 
 
-Python environment comparison tool.  Maximized for compatibility between versions 2.6 to 3.7, pypy,
+Python environment comparison tool.  Maximized for compatibility between versions 2.6 to 3.8, pypy,
 operating systems, distributions, and forks!  Virtualenv, pyenv, pyvenv, conda, system!
 
-Command Usage
--------------
+via Command-Line
+----------------
 
 From the command line, to get information on the current environment:
 
@@ -46,6 +46,30 @@ Or compare two from any environment
 ::
 
     python -m pyenvdiff.compare my_environment.json my_other_environment.json
+
+
+via Hub-Based Compare
+---------------------
+To launch the built-in hub (server):
+
+::
+
+    python -m pyenvdiff.hub
+
+
+Then navigate in your browser to the URL it gives you to see the menu of available options.  Before you send information
+about other environments on the same machine, your options will be limited to just viewing the server's environment.
+
+From one or more other environments run:
+
+::
+
+   python -m pyenvdiff.post_to_hub
+
+
+It'll give you a URL to view that environment from any machine on the same network.
+
+Navigate back to the base URL, you'll see more options to compare the two environments.
 
 
 Programmatic Usage
